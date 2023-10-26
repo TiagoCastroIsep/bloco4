@@ -71,7 +71,6 @@ public class Bloco4Utils {
         return count;
     }
 
-    // TODO: method test
     public static int[] getMultiplesOfNBetweenLimits(int x, int a, int b) {
         int[] limits = checkAndCorrectLimits(a, b);
         if (limits == null) return null;
