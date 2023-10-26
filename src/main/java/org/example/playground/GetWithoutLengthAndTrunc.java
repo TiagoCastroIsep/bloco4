@@ -15,7 +15,8 @@ public class GetWithoutLengthAndTrunc {
 
         long finalTime = System.currentTimeMillis() - startTime;
         System.out.println("Execution duration: " + finalTime + " milliseconds.");
-        /** Execution duration: 126 milliseconds. **/
+        /** Execution duration: 15 milliseconds. **/
+        /** Execution duration: 126 milliseconds. With +1 zero **/
     }
 
     private static int[] getArrayOfPairs(int[] arr) {
