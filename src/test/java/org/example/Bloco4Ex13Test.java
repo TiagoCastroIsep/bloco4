@@ -31,10 +31,10 @@ class Bloco4Ex13Test {
 
     // maxValue
     @Test
-    public void shouldReturnMinValueInIntArray_getMaxValueFromArray() {
+    public void shouldReturnMaxValueInIntArray_getMaxValueFromArray() {
         int[] numbers = {2, 3, 1, 10, 8};
         boolean minValue = false;
-        int expected = 1;
+        int expected = 10;
         assertEquals(expected, Bloco4Ex13.getMinOrMaxValueFromArray(numbers, minValue));
     }
 
@@ -52,5 +52,59 @@ class Bloco4Ex13Test {
         boolean minValue = false;
         int expected = 2;
         assertEquals(expected, Bloco4Ex13.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    @Test
+    public void shouldReturnAverageForAllArrayElements() {
+        int[] numbers = {2, 2, 2};
+        double expected = 2;
+        assertEquals(expected, Bloco4Ex13.getAverageFromArrayValues(numbers));
+    }
+
+    @Test
+    public void shouldReturnMinus1IfNumbersArrayIsLessEqualsZero() {
+        int[] numbers = new int[0];
+        double expected = -1;
+        assertEquals(expected, Bloco4Ex13.getAverageFromArrayValues(numbers));
+    }
+
+    @Test
+    public void shouldReturnProductOfArrayElements() {
+        int[] numbers = {2, 2, 2};
+        int expected = 8;
+        assertEquals(expected, Bloco4Ex13.getProductOfArrayElements(numbers));
+    }
+
+    @Test
+    public void shouldReturnMinus1IfNumbersArrayIsEmpty() {
+        int[] numbers = new int[0];
+        int expected = -1;
+        assertEquals(expected, Bloco4Ex13.getProductOfArrayElements(numbers));
+    }
+
+    @Test
+    public void shouldReturnSetOfNonRepeatedNumbers_getSetOfNonRepeatedNumbersMethod() {
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 8};
+        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8};
+        assertArrayEquals(expected, Bloco4Ex13.getSetOfNonRepeatedNumbers(numbers));
+    }
+
+    @Test
+    public void shouldReturnNullIfNumbersArrayIsEmpty_getSetOfNonRepeatedNumbersMethod() {
+        int[] numbers = new int[0];
+        assertNull(Bloco4Ex13.getSetOfNonRepeatedNumbers(numbers));
+    }
+
+    @Test
+    public void shouldReturnReversedNumbers_getReversedNumbersMethod() {
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8};
+        int[] expected = {8, 7, 6, 5, 4, 3, 2, 1};
+        assertArrayEquals(expected, Bloco4Ex13.getReversedNumbers(numbers));
+    }
+
+    @Test
+    public void shouldReturnNullIfNumbersArrayIsEmpty_getReversedNumbersMethod() {
+        int[] numbers = new int[0];
+        assertNull(Bloco4Ex13.getReversedNumbers(numbers));
     }
 }

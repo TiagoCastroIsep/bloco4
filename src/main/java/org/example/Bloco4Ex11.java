@@ -8,10 +8,10 @@ public class Bloco4Ex11 {
         int a = 4;
         int b = 12;
         int[] multiplesOf = {2, 3};
-        System.out.println("Result with normal arrays: " + Arrays.toString(getMultiplesOfNumbersInRange(a, b, multiplesOf)));
+        System.out.println("Result with normal arrays: " + Arrays.toString(getCommonMultiplesOfNumbersInRange(a, b, multiplesOf)));
     }
 
-    public static int[] getMultiplesOfNumbersInRange(int a, int b, int[] numbers) {
+    public static int[] getCommonMultiplesOfNumbersInRange(int a, int b, int[] numbers) {
         if (numbers.length == 0) return null;
         int[] limits = Bloco4Utils.checkAndCorrectLimits(a, b);
         if (limits == null) return null;
