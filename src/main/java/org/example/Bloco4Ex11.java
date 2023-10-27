@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Bloco4Ex11 {
 
@@ -26,6 +25,8 @@ public class Bloco4Ex11 {
 
         int[] commonMultiples = new int[arrayLength];
         findCommonMultiples(numbers, minLimit, maxLimit, commonMultiples);
+        findCommonMultiplesWithSet(numbers, minLimit, maxLimit);
+        findCommonMultiplesV2(numbers, minLimit, maxLimit, commonMultiples);
 
         return commonMultiples;
     }
@@ -46,6 +47,47 @@ public class Bloco4Ex11 {
                 k++;
             }
         }
+    }
+
+    private static void findCommonMultiplesWithSet(int[] numbers, int minLimit, int maxLimit) {
+        Set<Integer> commonMultiples = new HashSet<>();
+
+        // Get multiples of the first number. I need to do this, so I can later run the retainAll() method,
+        // which will intersect values with a current set and modify the current Set for the retained ones only.
+        for (int i = minLimit; i <= maxLimit; i++) {
+            if (i % numbers[0] == 0) {
+                commonMultiples.add(i);
+            }
+        }
+
+        // For the rest of the numbers, retain only common multiples
+        for (int i = 1; i < numbers.length; i++) {
+            Set<Integer> currentMultiples = new HashSet<>();
+            for (int j = minLimit; j <= maxLimit; j++) {
+                if (j % numbers[i] == 0) {
+                    currentMultiples.add(j);
+                }
+            }
+            commonMultiples.retainAll(currentMultiples);
+        }
+
+        System.out.println("Result with sets: " + commonMultiples);
+    }
+
+    public static void findCommonMultiplesV2(int[]numbers, int minLimit, int maxLimit, int[] commonMultiples) {
+        int count = 0;
+
+        for (int i = minLimit; i <= maxLimit; i++) {
+            for(int j = 0; j < numbers.length; j++) {
+                if (i % numbers[j] != 0) break;
+                if (j==(numbers.length-1)) {
+                    commonMultiples[count] = i;
+                    count++;
+                }
+            }
+        }
+
+        System.out.println("Result with normal arrays v2: " + Arrays.toString(commonMultiples));
     }
 
     private static void findCommonMultiplesWithArrayList(int[] numbers, int minLimit, int maxLimit) {
