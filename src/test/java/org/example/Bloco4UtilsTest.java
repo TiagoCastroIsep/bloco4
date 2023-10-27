@@ -144,5 +144,94 @@ class Bloco4UtilsTest {
         assertArrayEquals(expected, Bloco4Utils.getMultiplesOfNBetweenLimits(x, a, b));
     }
 
+    @Test
+    public void shouldReturnMinValueInIntArray_getMinValueFromArray() {
+        int[] numbers = {2, 3, 1, 10, 8};
+        boolean minValue = true;
+        int expected = 1;
+        assertEquals(expected, Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    @Test
+    public void shouldReturnMinus1ForEmptyArray_getMinValueFromArray() {
+        int[] numbers = new int[0];
+        boolean minValue = true;
+        int expected = -1;
+        assertEquals(expected, Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    @Test
+    public void shouldReturn2ForAllElementsEquals2_getMinValueFromArray() {
+        int[] numbers = {2, 2, 2};
+        boolean minValue = true;
+        int expected = 2;
+        assertEquals(expected, Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    // maxValue
+    @Test
+    public void shouldReturnMaxValueInIntArray_getMaxValueFromArray() {
+        int[] numbers = {2, 3, 1, 10, 8};
+        boolean minValue = false;
+        int expected = 10;
+        assertEquals(expected, Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    @Test
+    public void shouldReturnMinus1ForEmptyArray_getMaxValueFromArray() {
+        int[] numbers = new int[0];
+        boolean minValue = false;
+        int expected = -1;
+        assertEquals(expected, Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    @Test
+    public void shouldReturn2ForAllElementsEquals2_getMaxValueFromArray() {
+        int[] numbers = {2, 2, 2};
+        boolean minValue = false;
+        int expected = 2;
+        assertEquals(expected, Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue));
+    }
+
+    @Test
+    public void shouldReturnAverageForAllArrayElements() {
+        int[] numbers = {2, 2, 2};
+        double expected = 2;
+        assertEquals(expected, Bloco4Utils.getAverageFromArrayValues(numbers));
+    }
+
+    @Test
+    public void shouldReturnMinus1IfNumbersArrayIsLessEqualsZero() {
+        int[] numbers = new int[0];
+        double expected = -1;
+        assertEquals(expected, Bloco4Utils.getAverageFromArrayValues(numbers));
+    }
+
+    @Test
+    public void shouldReturnProductOfArrayElements() {
+        int[] numbers = {2, 2, 2};
+        int expected = 8;
+        assertEquals(expected, Bloco4Utils.getProductOfArrayElements(numbers));
+    }
+
+    @Test
+    public void shouldReturnMinus1IfNumbersArrayIsEmpty() {
+        int[] numbers = new int[0];
+        int expected = -1;
+        assertEquals(expected, Bloco4Utils.getProductOfArrayElements(numbers));
+    }
+
+    @Test
+    public void shouldReturnSetOfNonRepeatedNumbers_getSetOfNonRepeatedNumbersMethod() {
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 8};
+        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8};
+        assertArrayEquals(expected, Bloco4Utils.getSetOfNonRepeatedNumbers(numbers));
+    }
+
+    @Test
+    public void shouldReturnNullIfNumbersArrayIsEmpty_getSetOfNonRepeatedNumbersMethod() {
+        int[] numbers = new int[0];
+        assertNull(Bloco4Utils.getSetOfNonRepeatedNumbers(numbers));
+    }
 
 }

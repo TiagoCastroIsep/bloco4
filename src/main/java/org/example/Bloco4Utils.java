@@ -137,4 +137,83 @@ public class Bloco4Utils {
 
         return new int[] {minLimit, maxLimit};
     }
+
+    /** Ex. 13 and 18 **/
+
+    public static int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
+        if (numbers.length == 0) return -1;
+
+        int currentValue = numbers[0];
+        if (minValue) {
+            for (int num : numbers) if (num < currentValue) currentValue = num;
+
+            return currentValue;
+        }
+        for (int num : numbers) if (num > currentValue) currentValue = num;
+
+        return currentValue;
+    }
+
+    public static double getAverageFromArrayValues(int[] numbers) {
+        if (numbers.length == 0) return -1;
+
+        int totalElements = numbers.length;
+
+        double sumOfElements = 0;
+        for (int num : numbers) sumOfElements += num;
+
+        return sumOfElements / totalElements;
+    }
+
+    public static int getProductOfArrayElements(int[] numbers) {
+        if (numbers.length == 0) return -1;
+
+        int productOfNumbers = 1;
+        for (int num : numbers) productOfNumbers *= num;
+
+        return productOfNumbers;
+    }
+
+    public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
+        if (numbers.length == 0) return null;
+        int[] setOfNumbers = new int[numbers.length + 1];
+        filterDuplicatesLogic(numbers, setOfNumbers);
+
+        return getReducedSetOfNumbersArray(numbers, setOfNumbers);
+    }
+
+    private static void filterDuplicatesLogic(int[] numbers, int[] setOfNumbers) {
+        int reducedArrayLength = 0;
+
+        for (int i = 0, j = 1; i < numbers.length; i++) {
+            boolean isRepeated = false;
+            for (int k = 1; k < numbers.length; k++) {
+                if (k <= i) continue;
+                if (numbers[i] == numbers[k]) {
+                    isRepeated = true;
+                }
+            }
+            if (!isRepeated) {
+                setOfNumbers[j] = numbers[i];
+                j++;
+                reducedArrayLength++;
+            }
+        }
+
+        setOfNumbers[0] = reducedArrayLength;
+    }
+
+    private static int[] getReducedSetOfNumbersArray(int[] numbers, int[] setOfNumbers) {
+        if (numbers.length == setOfNumbers.length) return setOfNumbers;
+
+        int arrayLength = setOfNumbers[0];
+
+        int[] reducedArray = new int[arrayLength];
+
+        for (int i = 0; i < reducedArray.length; i++) {
+            reducedArray[i] = setOfNumbers[i + 1];
+        }
+
+        return reducedArray;
+    }
 }
