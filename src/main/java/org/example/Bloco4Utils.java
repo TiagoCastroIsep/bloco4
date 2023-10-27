@@ -174,6 +174,7 @@ public class Bloco4Utils {
         return productOfNumbers;
     }
 
+    /**START - EX 13**/
     public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
         if (numbers.length == 0) return null;
         int[] setOfNumbers = new int[numbers.length + 1];
@@ -203,7 +204,7 @@ public class Bloco4Utils {
         setOfNumbers[0] = reducedArrayLength;
     }
 
-    private static int[] getReducedSetOfNumbersArray(int[] numbers, int[] setOfNumbers) {
+    public static int[] getReducedSetOfNumbersArray(int[] numbers, int[] setOfNumbers) {
         if (numbers.length == setOfNumbers.length) return setOfNumbers;
 
         int arrayLength = setOfNumbers[0];
@@ -215,5 +216,49 @@ public class Bloco4Utils {
         }
 
         return reducedArray;
+    }
+    /**END - EX 13**/
+
+    /** EX 18 **/
+    public static boolean isPrimeNumber(int number) {
+        if (number < 2) return false;
+
+        for (int i = 2; i < number; i++) if (number % i == 0) return false;
+
+        return true;
+    }
+
+    public static boolean checkIfMatrixIsRectangular(int[][] matrix) {
+        if (matrix.length == 0) return false;
+
+        int numberOfRows = matrix.length;
+        for (int[] line : matrix) {
+            if (line.length > numberOfRows) return false;
+            if (line.length == numberOfRows) return false;
+        }
+
+        return true;
+    }
+
+    public static boolean checkIfMatrixIsSquare(int[][] matrix) {
+        if (matrix.length == 0) return false;
+
+        int matrixLength = matrix.length;
+        for (int[] line : matrix) {
+            if (line.length != matrixLength) return false;
+        }
+
+        return true;
+    }
+
+    public static int[] getReversedArray(int[] matrix) {
+        if (matrix.length == 0) return null;
+        int[] reversedArray = new int[matrix.length];
+
+        for (int i = 0; i < matrix.length; i++) {
+            reversedArray[i] = matrix[matrix.length - 1 - i];
+        }
+
+        return reversedArray;
     }
 }

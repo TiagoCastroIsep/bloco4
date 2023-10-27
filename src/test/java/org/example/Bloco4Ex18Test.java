@@ -40,4 +40,106 @@ class Bloco4Ex18Test {
         int[] numbers = new int[0];
         assertNull(Bloco4Ex18.getSetOfNonRepeatedNumbers(numbers));
     }
+
+    @Test
+    void shouldReturnPrimeNumbersFromArray() {
+        int[] numbers = new int[] {2, 3, 4, 5, 3, 4, 5, 8, 7};
+        int[] expected = new int[] {2, 3, 5, 3, 5, 7};
+        assertArrayEquals(expected, Bloco4Ex18.getPrimeNumbersFromArray(numbers));
+    }
+
+    @Test
+    void shouldReturnNullForEmptyNumbersArray() {
+        int[] numbers = new int[0];
+        assertNull(Bloco4Ex18.getPrimeNumbersFromArray(numbers));
+    }
+
+    @Test
+    void shouldReturnPrincipalDiagonalOfMatrix() {
+        int[][] matrix = new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        assertArrayEquals(new int[] {1, 5, 9}, Bloco4Ex18.getPrincipalDiagonalOfMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnNullForMatrixAtZeroEqualsZeroAtPrincipalDiagonal() {
+        int[][] matrix = new int[][] {{}};
+        assertNull(Bloco4Ex18.getPrincipalDiagonalOfMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnCorrectResultForMatrixNotRectangularAtPrincipalDiagonal() {
+        int[][] matrix = new int[][] {{1, 2}, {4, 5}};
+        int[] expected = new int[] {1, 5};
+        assertArrayEquals(expected, Bloco4Ex18.getPrincipalDiagonalOfMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnCorrectResultForMatrixNotRectangularAtSecondaryDiagonal() {
+        int[][] matrix = new int[][] {{1, 2}, {4, 5}};
+        int[] expected = new int[] {2, 4};
+        assertArrayEquals(expected, Bloco4Ex18.getSecondDiagonalOfMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnTrueForIsIdentityMatrix() {
+        int[][] matrix = new int[][] {
+                {1, 0, 1},
+                {0, 1, 0},
+                {1, 0, 1}
+        };
+        assertTrue(Bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnFalseForIsNotIdentityMatrix() {
+        int[][] matrix = new int[][] {
+                {1, 0, 0},
+                {0, 1, 0},
+                {1, 0, 1}
+        };
+        assertFalse(Bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnFalseForMatrixIsEmptyAtCheckIsIdentityMatrix() {
+        int[][] matrix = new int[][] {{}};
+        assertFalse(Bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnReversedMatrix() {
+        int[][] matrix = new int[][] {
+                {1, 2, 3},
+                {4, 5, 6}
+        };
+        assertArrayEquals(new int[][] {
+                {6, 5, 4},
+                {3, 2, 1}
+        }, Bloco4Ex18.getReversedMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnNullForMatrixIsEmptyAtGetReversedMatrix() {
+        int[][] matrix = new int[][] {{}};
+        assertNull(Bloco4Ex18.getReversedMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnTransposedMatrix() {
+        int[][] matrix = new int[][] {
+                {1, 2, 3},
+                {4, 5, 6}
+        };
+        assertArrayEquals(new int[][] {
+                {1, 4},
+                {2, 5},
+                {3, 6}
+        }, Bloco4Ex18.getTransposedMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnNullForMatrixIsEmptyAtGetTransposedMatrix() {
+        int[][] matrix = new int[][] {{}};
+        assertNull(Bloco4Ex18.getTransposedMatrix(matrix));
+    }
 }

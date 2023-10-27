@@ -234,4 +234,103 @@ class Bloco4UtilsTest {
         assertNull(Bloco4Utils.getSetOfNonRepeatedNumbers(numbers));
     }
 
+    //EX18
+    @Test
+    public void shouldReturnIsPrimeNumber_isPrimeNumber() {
+        int number = 11;
+        assertTrue(Bloco4Utils.isPrimeNumber(number));
+    }
+
+    @Test
+    public void shouldReturnIsNotPrimeNumber_isPrimeNumber() {
+        int number = 1;
+        assertFalse(Bloco4Utils.isPrimeNumber(number));
+    }
+
+    /** matrix is rectangular **/
+    @Test
+    public void shouldReturnFalseForEmptyMatrix() {
+        int[][] matrix = new int[0][0];
+        assertFalse(Bloco4Utils.checkIfMatrixIsRectangular(matrix));
+    }
+
+    @Test
+    public void shouldReturnFalseForSquareMatrix() {
+        int[][] matrix = {
+                {1, 2},
+                {1, 2}
+        };
+        assertFalse(Bloco4Utils.checkIfMatrixIsRectangular(matrix));
+    }
+
+    @Test
+    public void shouldReturnFalseForMatrixWithDifferentNumberOfColumns() {
+        int[][] matrix = {
+                {1, 2, 3},
+                {1, 2},
+                {1, 2, 3, 4}
+        };
+
+        assertFalse(Bloco4Utils.checkIfMatrixIsRectangular(matrix));
+    }
+
+    @Test
+    public void shouldReturnTrueForMatrixIsRectangle() {
+        int[][] matrix = {
+                {1, 2, 3},
+                {1, 2, 3}
+        };
+        assertFalse(Bloco4Utils.checkIfMatrixIsRectangular(matrix));
+    }
+
+    /** matrix is square **/
+    @Test
+    public void shouldReturnFalseForEmptyMatrix_checkIfMatrixIsSquare() {
+        int[][] matrix = new int[0][0];
+        assertFalse(Bloco4Utils.checkIfMatrixIsSquare(matrix));
+    }
+
+    @Test
+    public void shouldReturnFalseForNonSquareMatrix_checkIfMatrixIsSquare() {
+        int[][] matrix = {
+                {1, 2, 3},
+                {1, 2, 3}
+        };
+        assertFalse(Bloco4Utils.checkIfMatrixIsSquare(matrix));
+    }
+
+    @Test
+    public void shouldReturnFalseForMatrixOfLengthEqualsZero_checkIfMatrixIsSquare() {
+        int[][] matrix = {
+                {}
+        };
+        assertFalse(Bloco4Utils.checkIfMatrixIsSquare(matrix));
+    }
+
+    @Test
+    public void shouldReturnTrueForSquareMatrix_checkIfMatrixIsSquare() {
+        int[][] matrix = {
+                {1, 2, 3},
+                {1, 2, 3},
+                {1, 2, 3}
+        };
+        assertTrue(Bloco4Utils.checkIfMatrixIsSquare(matrix));
+    }
+
+    @Test
+    public void shouldReturnTrueForSquareMatrixWithOneElement_checkIfMatrixIsSquare() {
+        int[][] matrix = {
+                {1}
+        };
+        assertTrue(Bloco4Utils.checkIfMatrixIsSquare(matrix));
+    }
+
+    @Test
+    public void shouldReturnTrueForSquareMatrixWithTwoElements_checkIfMatrixIsSquare() {
+        int[][] matrix = {
+                {1, 2},
+                {1, 2}
+        };
+        assertTrue(Bloco4Utils.checkIfMatrixIsSquare(matrix));
+    }
 }
