@@ -30,12 +30,17 @@ public class Bloco4Ex18 {
         }
 
         /** cleanup **/
+        int[] primeNumbersCleanedUpList = getTrimmedArrayOfPrimeNumbers(primeNumbersIndex, primeNumbers);
+
+        return primeNumbersCleanedUpList;
+    }
+
+    private static int[] getTrimmedArrayOfPrimeNumbers(int primeNumbersIndex, int[] primeNumbers) {
         int[] primeNumbersCleanedUpList = new int[primeNumbersIndex];
         for (int i = 0; i < primeNumbersCleanedUpList.length; i++) {
             if (primeNumbers[i] == 0) break;
             primeNumbersCleanedUpList[i] = primeNumbers[i];
         }
-
         return primeNumbersCleanedUpList;
     }
 
@@ -58,7 +63,7 @@ public class Bloco4Ex18 {
         return secondDiagonal;
     }
 
-    private static boolean validateMatrixForRectangularSquareAndLength(int[][] matrix) {
+    public static boolean validateMatrixForRectangularSquareAndLength(int[][] matrix) {
         if (matrix[0].length == 0) return false;
         if (matrix[1].length == 0) return false;
         if (!Bloco4Utils.checkIfMatrixIsRectangular(matrix) &&
