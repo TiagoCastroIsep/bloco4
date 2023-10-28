@@ -93,6 +93,15 @@ public class Bloco4Ex11 {
     private static void findCommonMultiplesWithArrayList(int[] numbers, int minLimit, int maxLimit) {
         List<Integer> list = new ArrayList<>();
 
+        System.out.println("numbers[0]: " + numbers[0]);
+        if (numbers[0] == 0) {
+            for (int number : numbers) {
+                list.add(number);
+            }
+
+            return;
+        }
+
         for (int i = minLimit; i <= maxLimit; i++) {
             int count = 0;
 

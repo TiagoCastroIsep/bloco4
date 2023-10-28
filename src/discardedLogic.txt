@@ -1,0 +1,23 @@
+// excess array NOT NEEDED SINCE I'LL ALWAYS HAVE ONE COMMON VALUE AND JUST ONE!
+        int[] commonValues = new int[rowChoicesQty + columnChoicesQty];
+        int k = 1;
+        // compare both arrays, keep only the common values
+        for (int i = 0; i < playersPossibleChoices[0].length; i++) {
+            for (int j = 0; j < playersPossibleChoices[1].length; j++) {
+                if (playersPossibleChoices[0][i] == playersPossibleChoices[1][j]) {
+                    commonValues[k] = playersPossibleChoices[1][j];
+                    k++;
+                }
+            }
+        }
+
+        commonValues[0] = k - 1;
+
+        int[] cleanedUpCommonValuesArray = trimExcessZerosFromArray(commonValues);
+
+// truncate array
+private static int[] trimExcessZerosFromArray(int[] commonValues) {
+        int[] trimmedArray = new int[commonValues[0]];
+        for (int i = 0; i < trimmedArray.length; i++) trimmedArray[i] = commonValues[i + 1];
+        return trimmedArray;
+    }
