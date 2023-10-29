@@ -20,7 +20,7 @@ class Bloco4Ex11Test {
         int a = 1;
         int b = 12;
         int[] multiplesOf = {0, 3};
-        int[] expected = {6, 12}; // basicamente todos os multiplos de 3;
+        int[] expected = {3, 6, 9, 12};
         assertArrayEquals(expected, Bloco4Ex11.getCommonMultiplesOfNumbersInRange(a, b, multiplesOf));
     }
 

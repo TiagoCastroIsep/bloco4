@@ -178,6 +178,63 @@ class Bloco4Ex22Test {
     }
 
     @Test
+    void shouldReturnTrueForValidateUserSelection5() {
+        int[][] gameMatrix = {
+                {8, 1, 2, 7, 5, 3, 6, 4, 9},
+                {9, 4, 3, 6, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 0, 8, 3},
+                {1, 7, 4, 2, 3, 5, 8, 9, 6},
+                {3, 6, 9, 8, 0, 7, 0, 2, 1},
+                {2, 8, 7, 1, 6, 9, 5, 3, 4},
+                {5, 2, 1, 9, 7, 4, 3, 6, 8},
+                {4, 3, 8, 5, 2, 6, 9, 1, 7},
+                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+        };
+        int rowSelected = 8;
+        int columnSelected = 5;
+        int numberSelected = 8;
+        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
+    @Test
+    void shouldReturnTrueForValidateUserSelection6() {
+        int[][] gameMatrix = {
+                {8, 1, 2, 7, 5, 3, 6, 4, 9},
+                {9, 4, 3, 6, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 7, 8, 3},
+                {1, 0, 4, 2, 3, 0, 8, 9, 6},
+                {3, 6, 9, 8, 0, 0, 0, 2, 1},
+                {2, 8, 7, 1, 6, 9, 5, 3, 4},
+                {5, 2, 1, 9, 7, 4, 3, 6, 8},
+                {4, 3, 8, 5, 2, 6, 9, 1, 7},
+                {7, 9, 6, 3, 1, 8, 4, 5, 2}
+        };
+        int rowSelected = 3;
+        int columnSelected = 5;
+        int numberSelected = 7;
+        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
+    @Test
+    void shouldReturnTrueForValidateUserSelection7() {
+        int[][] gameMatrix = {
+                {8, 1, 2, 7, 5, 3, 6, 4, 9},
+                {9, 4, 0, 0, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 0, 8, 0},
+                {1, 0, 4, 2, 3, 0, 8, 9, 6},
+                {3, 6, 9, 8, 0, 0, 0, 2, 1},
+                {0, 8, 7, 0, 6, 9, 5, 0, 4},
+                {0, 2, 0, 9, 7, 4, 3, 0, 0},
+                {4, 3, 0, 0, 2, 6, 9, 0, 7},
+                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+        };
+        int rowSelected = 2;
+        int columnSelected = 1;
+        int numberSelected = 7;
+        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
+    @Test
     void shouldReturnTrueForValidateUserSelection4() {
         int[][] gameMatrix = {
                 {0, 1, 2, 7, 5, 3, 6, 0, 9},
@@ -195,6 +252,83 @@ class Bloco4Ex22Test {
         int numberSelected = 3;
         assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
+
+    @Test
+    void shouldReturnFalseForRowValueLessThanZero() {
+        int[][] gameMatrix = {
+                {0, 1, 2, 7, 5, 3, 6, 0, 9},
+                {9, 4, 0, 0, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 0, 8, 0},
+                {1, 0, 4, 2, 3, 0, 8, 9, 6},
+                {3, 6, 9, 8, 0, 0, 0, 2, 1},
+                {0, 8, 7, 0, 6, 9, 5, 0, 4},
+                {0, 2, 0, 9, 7, 4, 3, 0, 0},
+                {4, 3, 0, 0, 2, 6, 9, 0, 7},
+                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+        };
+        int rowSelected = -1;
+        int columnSelected = 5;
+        int numberSelected = 5;
+        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
+    @Test
+    void shouldReturnFalseForColumnValueLessThanZero() {
+        int[][] gameMatrix = {
+                {0, 1, 2, 7, 5, 3, 6, 0, 9},
+                {9, 4, 0, 0, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 0, 8, 0},
+                {1, 0, 4, 2, 3, 0, 8, 9, 6},
+                {3, 6, 9, 8, 0, 0, 0, 2, 1},
+                {0, 8, 7, 0, 6, 9, 5, 0, 4},
+                {0, 2, 0, 9, 7, 4, 3, 0, 0},
+                {4, 3, 0, 0, 2, 6, 9, 0, 7},
+                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+        };
+        int rowSelected = 0;
+        int columnSelected = -1;
+        int numberSelected = 5;
+        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
+    @Test
+    void shouldReturnFalseForRowValueMoreThan8() {
+        int[][] gameMatrix = {
+                {0, 1, 2, 7, 5, 3, 6, 0, 9},
+                {9, 4, 0, 0, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 0, 8, 0},
+                {1, 0, 4, 2, 3, 0, 8, 9, 6},
+                {3, 6, 9, 8, 0, 0, 0, 2, 1},
+                {0, 8, 7, 0, 6, 9, 5, 0, 4},
+                {0, 2, 0, 9, 7, 4, 3, 0, 0},
+                {4, 3, 0, 0, 2, 6, 9, 0, 7},
+                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+        };
+        int rowSelected = 9;
+        int columnSelected = 5;
+        int numberSelected = 5;
+        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
+    @Test
+    void shouldReturnFalseForColumnValueMoreThan8() {
+        int[][] gameMatrix = {
+                {0, 1, 2, 7, 5, 3, 6, 0, 9},
+                {9, 4, 0, 0, 8, 2, 1, 7, 5},
+                {6, 0, 5, 4, 0, 1, 0, 8, 0},
+                {1, 0, 4, 2, 3, 0, 8, 9, 6},
+                {3, 6, 9, 8, 0, 0, 0, 2, 1},
+                {0, 8, 7, 0, 6, 9, 5, 0, 4},
+                {0, 2, 0, 9, 7, 4, 3, 0, 0},
+                {4, 3, 0, 0, 2, 6, 9, 0, 7},
+                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+        };
+        int rowSelected = 0;
+        int columnSelected = 9;
+        int numberSelected = 5;
+        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+    }
+
 
     @Test
     void shouldReturnFalseForOccupiedSlotOnValidateUserSelection() {

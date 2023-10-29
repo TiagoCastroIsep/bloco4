@@ -39,6 +39,12 @@ public class Bloco4Ex22 {
         // finding the missing numbers in column
         int[] missingColumnNumbers = runLookupForMissingNumbers(sortedAvailableNumbersInColumn);
 
+        // TODO: remove this log
+        System.out.println(Arrays.deepToString(new int[][]{
+                missingRowNumbers,
+                missingColumnNumbers
+        }));
+
         return new int[][] {
                 missingRowNumbers,
                 missingColumnNumbers
@@ -46,6 +52,8 @@ public class Bloco4Ex22 {
     }
 
     public static boolean validateUserSelection(int[][] gameMatrix, int rowSelected, int columnSelected, int numberSelected) {
+        if (rowSelected > 8 || rowSelected < 0) return false;
+        if (columnSelected > 8 || columnSelected < 0) return false;
         int[][] playersPossibleChoices = getPlayerChoicesForGivenSelection(gameMatrix, rowSelected, columnSelected);
         if (playersPossibleChoices == null) return false;
 
@@ -93,6 +101,23 @@ public class Bloco4Ex22 {
         int arrayLength = getMissingNumbersArrayLength(sortedAvailableNumbers);
 
         int[] missingNumbers = new int[arrayLength];
+
+        //TODO: separate this logic to other method
+        if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] != 9) {
+            int lastNumber = 9;
+            int endNumberAtSortedArray = sortedAvailableNumbers[sortedAvailableNumbers.length - 1];
+            missingNumbers = Arrays.copyOf(missingNumbers, arrayLength + (lastNumber - endNumberAtSortedArray));
+
+            // start filling the missingNumbers array at the end.
+            int decrement = missingNumbers.length - 1;
+            int missingValueUpperLimit = 9;
+            for (int i = sortedAvailableNumbers[sortedAvailableNumbers.length - 1]; i < lastNumber; i++) {
+                missingNumbers[decrement] = missingValueUpperLimit;
+                decrement--;
+                missingValueUpperLimit--;
+            }
+        }
+
         int currentPosition = 0;
         int currentResult = 1;
         for (int i = 0; i < sortedAvailableNumbers.length; i++) {
@@ -104,12 +129,17 @@ public class Bloco4Ex22 {
             currentResult++;
         }
 
+        System.out.println("Missing nums: " + Arrays.toString(missingNumbers));
+
         return missingNumbers;
     }
 
     private static int getMissingNumbersArrayLength(int[] sortedAvailableNumbers) {
         int arrayLength = 0;
         int current = 1;
+        if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] != 9) {
+            for (int i = sortedAvailableNumbers[sortedAvailableNumbers.length - 1]; i < 9 - sortedAvailableNumbers.length - 1; i++) arrayLength++;
+        }
         for (int i = 0; i < sortedAvailableNumbers.length; i++) {
             if (sortedAvailableNumbers[i] != current) {
                 arrayLength++;
@@ -117,6 +147,7 @@ public class Bloco4Ex22 {
             }
             current++;
         }
+
         return arrayLength;
     }
 
@@ -151,59 +182,5 @@ public class Bloco4Ex22 {
         }
 
         return availableNumbers;
-    }
-
-    public static void main(String[] args) {
-        // example of execution
-        int[][] gameMatrix = {
-                {0, 1, 2, 7, 5, 3, 6, 0, 9},
-                {9, 4, 0, 0, 8, 2, 1, 7, 5},
-                {6, 0, 5, 4, 0, 1, 0, 8, 0},
-                {1, 0, 4, 2, 3, 0, 8, 9, 6},
-                {3, 6, 9, 8, 0, 0, 0, 2, 1},
-                {0, 8, 7, 0, 6, 9, 5, 0, 4},
-                {0, 2, 0, 9, 7, 4, 3, 0, 0},
-                {4, 3, 0, 0, 2, 6, 9, 0, 7},
-                {7, 0, 6, 3, 1, 0, 0, 5, 2}
-        };
-
-        System.out.println(Arrays.deepToString(gameMatrix).replace("], ",
-                "]\n").replace("[[", "[").replace("]]", "]"));
-
-        boolean gameOver = false;
-
-        while (!gameOver) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Please enter the row number: ");
-            int rowSelected = scanner.nextInt();
-            System.out.println("Please enter the column number: ");
-            int columnSelected = scanner.nextInt();
-            System.out.println("Please enter the number: ");
-            int numberSelected = scanner.nextInt();
-
-            if (validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected)) {
-                gameMatrix = updateGameMatrix(gameMatrix, rowSelected, columnSelected, numberSelected);
-                System.out.println("The game matrix was updated! Your choice was correct!");
-            } else {
-                System.out.println("The game matrix was not updated! Your choice was incorrect or the slot is already filled!");
-            }
-
-            System.out.println("The game matrix is: ");
-            System.out.println(Arrays.deepToString(gameMatrix).replace("], ",
-                    "]\n").replace("[[", "[").replace("]]", "]"));
-
-            gameOver = checkGameOver(gameMatrix);
-
-            if (gameOver) {
-                System.out.println("Game Over!");
-            }
-
-            Scanner scanner2 = new Scanner(System.in);
-            System.out.println("Do you want to continue? (Y/N)");
-            String continueGame = scanner2.nextLine();
-            if (continueGame.equals("N")) {
-                gameOver = true;
-            }
-        }
     }
 }
