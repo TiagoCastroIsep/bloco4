@@ -15,7 +15,7 @@ public class GetResultWithStreams {
 
         long finalTime = System.currentTimeMillis() - startTime;
         System.out.println("Execution duration: " + finalTime + " milliseconds.");
-        /** Execution duration: 54 milliseconds. ~max = 56 millis ---> rever com carregador ligado **/
-        /** Execution duration: 481 milliseconds. With +1 zero ---> rever com carregador ligado **/
+        /** Execution duration: 54 milliseconds. ~max = 56 millis **/
+        /** Execution duration: 481 milliseconds. With +1 zero **/
     }
 }
