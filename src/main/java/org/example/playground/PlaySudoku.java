@@ -9,15 +9,15 @@ public class PlaySudoku {
     public static void main(String[] args) {
         // example of execution
         int[][] gameMatrix = {
-                {0, 1, 2, 7, 5, 3, 6, 0, 9},
-                {9, 4, 0, 0, 8, 2, 1, 7, 5},
-                {6, 0, 5, 4, 0, 1, 0, 8, 0},
-                {1, 0, 4, 2, 3, 0, 8, 9, 6},
-                {3, 6, 9, 8, 0, 0, 0, 2, 1},
-                {0, 8, 7, 0, 6, 9, 5, 0, 4},
-                {0, 2, 0, 9, 7, 4, 3, 0, 0},
-                {4, 3, 0, 0, 2, 6, 9, 0, 7},
-                {7, 0, 6, 3, 1, 0, 0, 5, 2}
+                {9, 4, 6, 2, 8, 7, 3, 5, 0},
+                {5, 8, 3, 6, 0, 9, 7, 4, 2},
+                {2, 0, 7, 5, 4, 3, 6, 9, 8},
+                {8, 6, 5, 4, 3, 2, 0, 7, 9},
+                {7, 2, 0, 9, 6, 5, 4, 8, 3},
+                {4, 3, 9, 0, 7, 8, 5, 2, 6},
+                {6, 7, 8, 3, 2, 4, 9, 0, 5},
+                {3, 9, 4, 8, 5, 0, 2, 6, 7},
+                {0, 5, 2, 7, 9, 6, 8, 3, 4}
         };
 
         System.out.println("|0, 1, 2, 3, 4, 5, 6, 7, 8|");
@@ -29,12 +29,21 @@ public class PlaySudoku {
 
         while (!gameOver) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Please enter the row number: ");
-            int rowSelected = scanner.nextInt();
+            System.out.println("Please enter the row number (\"Q\" or \"q\" to quit): ");
+            String selection = scanner.nextLine();
+            if (selection.equals("Q") || selection.equals("q")) gameOver = true;
+            if (gameOver) break;
+            int rowSelected;
+            try{
+                rowSelected = Integer.parseInt(selection.trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Could not convert the provided number. Please try again.");
+                rowSelected = scanner.nextInt();
+            }
+
             System.out.println("Please enter the column number: ");
             int columnSelected = scanner.nextInt();
-            //TODO: remove this
-            Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, 0);
+
             System.out.println("Please enter the number: ");
             int numberSelected = scanner.nextInt();
 
@@ -55,13 +64,6 @@ public class PlaySudoku {
 
             if (gameOver) {
                 System.out.println("Game Over!");
-            }
-
-            Scanner scanner2 = new Scanner(System.in);
-            System.out.println("Do you want to continue? (Enter to continue/N to exit)");
-            String continueGame = scanner2.nextLine();
-            if (continueGame.equals("N") || continueGame.equals("n")) {
-                gameOver = true;
             }
         }
     }

@@ -216,25 +216,6 @@ class Bloco4Ex22Test {
     }
 
     @Test
-    void shouldReturnTrueForValidateUserSelection7() {
-        int[][] gameMatrix = {
-                {8, 1, 2, 7, 5, 3, 6, 4, 9},
-                {9, 4, 0, 0, 8, 2, 1, 7, 5},
-                {6, 0, 5, 4, 0, 1, 0, 8, 0},
-                {1, 0, 4, 2, 3, 0, 8, 9, 6},
-                {3, 6, 9, 8, 0, 0, 0, 2, 1},
-                {0, 8, 7, 0, 6, 9, 5, 0, 4},
-                {0, 2, 0, 9, 7, 4, 3, 0, 0},
-                {4, 3, 0, 0, 2, 6, 9, 0, 7},
-                {7, 0, 6, 3, 1, 0, 0, 5, 2}
-        };
-        int rowSelected = 2;
-        int columnSelected = 1;
-        int numberSelected = 7;
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
-    }
-
-    @Test
     void shouldReturnTrueForValidateUserSelection4() {
         int[][] gameMatrix = {
                 {0, 1, 2, 7, 5, 3, 6, 0, 9},

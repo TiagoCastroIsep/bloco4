@@ -39,12 +39,6 @@ public class Bloco4Ex22 {
         // finding the missing numbers in column
         int[] missingColumnNumbers = runLookupForMissingNumbers(sortedAvailableNumbersInColumn);
 
-        // TODO: remove this log
-        System.out.println(Arrays.deepToString(new int[][]{
-                missingRowNumbers,
-                missingColumnNumbers
-        }));
-
         return new int[][] {
                 missingRowNumbers,
                 missingColumnNumbers
@@ -102,7 +96,25 @@ public class Bloco4Ex22 {
 
         int[] missingNumbers = new int[arrayLength];
 
-        //TODO: separate this logic to other method
+        // If my sortedAvailableNumbersList at the ending didn't have the number 9,
+        // with the code below I'd not catch it also that's why this line is here
+        missingNumbers = checkAndUpdateMissingNumbersForTheMaximumBound(sortedAvailableNumbers, missingNumbers, arrayLength);
+
+        int currentPosition = 0;
+        int currentResult = 1;
+        for (int i = 0; i < sortedAvailableNumbers.length; i++) {
+            if (sortedAvailableNumbers[i] != currentResult) {
+                missingNumbers[currentPosition] = currentResult;
+                i--;
+                currentPosition++;
+            }
+            currentResult++;
+        }
+
+        return missingNumbers;
+    }
+
+    private static int[] checkAndUpdateMissingNumbersForTheMaximumBound(int[] sortedAvailableNumbers, int[] missingNumbers, int arrayLength) {
         if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] != 9) {
             int lastNumber = 9;
             int endNumberAtSortedArray = sortedAvailableNumbers[sortedAvailableNumbers.length - 1];
@@ -117,20 +129,6 @@ public class Bloco4Ex22 {
                 missingValueUpperLimit--;
             }
         }
-
-        int currentPosition = 0;
-        int currentResult = 1;
-        for (int i = 0; i < sortedAvailableNumbers.length; i++) {
-            if (sortedAvailableNumbers[i] != currentResult) {
-                missingNumbers[currentPosition] = currentResult;
-                i--;
-                currentPosition++;
-            }
-            currentResult++;
-        }
-
-        System.out.println("Missing nums: " + Arrays.toString(missingNumbers));
-
         return missingNumbers;
     }
 
@@ -138,7 +136,8 @@ public class Bloco4Ex22 {
         int arrayLength = 0;
         int current = 1;
         if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] != 9) {
-            for (int i = sortedAvailableNumbers[sortedAvailableNumbers.length - 1]; i < 9 - sortedAvailableNumbers.length - 1; i++) arrayLength++;
+            for (int i = sortedAvailableNumbers[sortedAvailableNumbers.length - 1];
+                 i < 9 - sortedAvailableNumbers.length - 1; i++) arrayLength++;
         }
         for (int i = 0; i < sortedAvailableNumbers.length; i++) {
             if (sortedAvailableNumbers[i] != current) {

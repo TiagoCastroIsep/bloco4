@@ -14,7 +14,6 @@ class Bloco4Ex11Test {
         assertArrayEquals(expected, Bloco4Ex11.getCommonMultiplesOfNumbersInRange(a, b, multiplesOf));
     }
 
-    // TODO: implementar condição
     @Test
     public void shouldReturnCommonMultiplesInIntervalOneOfTheMultiplesIsZero() {
         int a = 1;
