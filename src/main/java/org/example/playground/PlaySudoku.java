@@ -9,11 +9,11 @@ public class PlaySudoku {
     public static void main(String[] args) {
         // example of execution
         int[][] gameMatrix = {
-                {9, 4, 6, 2, 8, 7, 3, 5, 0},
-                {5, 8, 3, 6, 0, 9, 7, 4, 2},
-                {2, 0, 7, 5, 4, 3, 6, 9, 8},
-                {8, 6, 5, 4, 3, 2, 0, 7, 9},
-                {7, 2, 0, 9, 6, 5, 4, 8, 3},
+                {0, 4, 6, 2, 8, 7, 3, 5, 1}, // 9
+                {5, 0, 3, 6, 1, 9, 7, 4, 2}, // 8
+                {2, 1, 0, 0, 4, 3, 6, 9, 8}, // 7, 5
+                {8, 6, 5, 4, 3, 2, 0, 7, 9}, // 1
+                {7, 2, 0, 9, 6, 5, 4, 8, 3}, // 1 ...
                 {4, 3, 9, 0, 7, 8, 5, 2, 6},
                 {6, 7, 8, 3, 2, 4, 9, 0, 5},
                 {3, 9, 4, 8, 5, 0, 2, 6, 7},
@@ -54,7 +54,7 @@ public class PlaySudoku {
                 System.out.println("The game matrix was not updated! Your choice was incorrect or the slot is already filled!");
             }
 
-            System.out.println("The game matrix is: ");
+            System.out.println("The current game matrix is: ");
             System.out.println("|0, 1, 2, 3, 4, 5, 6, 7, 8|");
             System.out.println("---------------------------");
             System.out.println(Arrays.deepToString(gameMatrix).replace("], ",
@@ -63,7 +63,7 @@ public class PlaySudoku {
             gameOver = Bloco4Ex22.checkGameOver(gameMatrix);
 
             if (gameOver) {
-                System.out.println("Game Over!");
+                System.out.println("Game Over! Thank you for playing!");
             }
         }
     }
