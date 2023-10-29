@@ -39,11 +39,6 @@ public class Bloco4Ex22 {
         // finding the missing numbers in column
         int[] missingColumnNumbers = runLookupForMissingNumbers(sortedAvailableNumbersInColumn);
 
-        System.out.println(Arrays.deepToString(new int[][]{
-                missingRowNumbers,
-                missingColumnNumbers
-        }));
-
         return new int[][] {
                 missingRowNumbers,
                 missingColumnNumbers

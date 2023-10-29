@@ -59,11 +59,15 @@ public class PlaySudoku {
             System.out.println("---------------------------");
             System.out.println(Arrays.deepToString(gameMatrix).replace("], ",
                     "]\n").replace("[[", "[").replace("]]", "]"));
+            System.out.println("---------------------------");
+            System.out.println("|0, 1, 2, 3, 4, 5, 6, 7, 8|");
 
             gameOver = Bloco4Ex22.checkGameOver(gameMatrix);
 
             if (gameOver) {
+                System.out.println("---------------------------------");
                 System.out.println("Game Over! Thank you for playing!");
+                System.out.println("---------------------------------");
             }
         }
     }
