@@ -39,6 +39,11 @@ public class Bloco4Ex22 {
         // finding the missing numbers in column
         int[] missingColumnNumbers = runLookupForMissingNumbers(sortedAvailableNumbersInColumn);
 
+        System.out.println(Arrays.deepToString(new int[][]{
+                missingRowNumbers,
+                missingColumnNumbers
+        }));
+
         return new int[][] {
                 missingRowNumbers,
                 missingColumnNumbers
@@ -96,55 +101,52 @@ public class Bloco4Ex22 {
 
         int[] missingNumbers = new int[arrayLength];
 
-        // If my sortedAvailableNumbersList at the ending didn't have the number 9,
-        // with the code below I'd not catch it also that's why this line is here
-        missingNumbers = checkAndUpdateMissingNumbersForTheMaximumBound(sortedAvailableNumbers, missingNumbers, arrayLength);
-
         int currentPosition = 0;
         int currentResult = 1;
-        for (int i = 0; i < sortedAvailableNumbers.length; i++) {
-            if (sortedAvailableNumbers[i] != currentResult) {
-                missingNumbers[currentPosition] = currentResult;
-                i--;
-                currentPosition++;
-            }
-            currentResult++;
+
+        // defining the loop length based on the last digit of the sortedArray
+        // this is just because if the array ends with 7 for example, it would not add 8 and 9 to the missing numbers
+        int loopLength = 9;
+        if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] == 9) {
+            loopLength = sortedAvailableNumbers.length;
         }
+
+        runLookupLoop(sortedAvailableNumbers, loopLength, currentResult, missingNumbers, currentPosition);
 
         return missingNumbers;
     }
 
-    private static int[] checkAndUpdateMissingNumbersForTheMaximumBound(int[] sortedAvailableNumbers, int[] missingNumbers, int arrayLength) {
-        if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] != 9) {
-            int lastNumber = 9;
-            int endNumberAtSortedArray = sortedAvailableNumbers[sortedAvailableNumbers.length - 1];
-            missingNumbers = Arrays.copyOf(missingNumbers, arrayLength + (lastNumber - endNumberAtSortedArray));
-
-            // start filling the missingNumbers array at the end.
-            int decrement = missingNumbers.length - 1;
-            int missingValueUpperLimit = 9;
-            for (int i = sortedAvailableNumbers[sortedAvailableNumbers.length - 1]; i < lastNumber; i++) {
-                missingNumbers[decrement] = missingValueUpperLimit;
-                decrement--;
-                missingValueUpperLimit--;
+    private static void runLookupLoop(int[] sortedAvailableNumbers, int loopLength, int currentResult, int[] missingNumbers, int currentPosition) {
+        for (int i = 0; i < loopLength; i++) {
+            if (i < sortedAvailableNumbers.length) {
+                if (sortedAvailableNumbers[i] != currentResult) {
+                    missingNumbers[currentPosition] = currentResult;
+                    i--;
+                    currentPosition++;
+                }
+                currentResult++;
+            } else {
+                missingNumbers[currentPosition] = currentResult;
             }
         }
-        return missingNumbers;
     }
 
     private static int getMissingNumbersArrayLength(int[] sortedAvailableNumbers) {
         int arrayLength = 0;
         int current = 1;
+
         if (sortedAvailableNumbers[sortedAvailableNumbers.length - 1] != 9) {
-            for (int i = sortedAvailableNumbers[sortedAvailableNumbers.length - 1];
-                 i < 9 - sortedAvailableNumbers.length - 1; i++) arrayLength++;
+            arrayLength = 9 - sortedAvailableNumbers[sortedAvailableNumbers.length - 1];
         }
-        for (int i = 0; i < sortedAvailableNumbers.length; i++) {
-            if (sortedAvailableNumbers[i] != current) {
-                arrayLength++;
-                i--;
+
+        for (int i = 0; i < 9; i++) {
+            if (i < sortedAvailableNumbers.length) {
+                if (sortedAvailableNumbers[i] != current) {
+                    arrayLength++;
+                    i--;
+                }
+                current++;
             }
-            current++;
         }
 
         return arrayLength;
