@@ -2,7 +2,7 @@ package org.example;
 
 public class Bloco4Ex19 {
     public static int getMatrixDeterminantWithLaplaceTheorem(int[][] matrix) {
-        if (!Bloco4Ex18.validateMatrixForRectangularSquareAndLength(matrix)) return 0;
+        if (!Bloco4Ex18.validateMatrixForRectangularSquareAndLength(matrix)) return -1;
 
         int determinant;
         if (matrix.length == 1) determinant = matrix[0][0];

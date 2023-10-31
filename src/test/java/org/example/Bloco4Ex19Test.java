@@ -15,7 +15,7 @@ class Bloco4Ex19Test {
     @Test
     void shouldReturnMatrixDeterminantWithLaplaceTheorem2() {
         int[][] matrix = {{1, 2, 3}, {4, 5, 6}};
-        int expected = -3;
+        int expected = -1; // should throw error instead
         assertEquals(expected, Bloco4Ex19.getMatrixDeterminantWithLaplaceTheorem(matrix));
     }
 }
