@@ -6,15 +6,15 @@ public class Bloco4Ex21 {
     public static void main(String[] args) {
         char[][] lettersMatrix = {
                 {'a', 'b', 'c', 'd'},
-                {'d', 'b', 'f', 'e'},
-                {'g', 'h', 'i', 'o'},
+                {'x', 'z', 'f', 'e'},
+                {'g', 'p', 'i', 'o'},
                 {'p', 'u', 'x', 'y'}
         };
         //checkExists(lettersMatrix, "abi");
         //checkUpFromPrincipalDiagonal(lettersMatrix, "ce");
         //checkPrincipalDiagonalAndDown(lettersMatrix, "gu");
         //checkSecondaryDiagonalAndDown(lettersMatrix, "hp");
-        checkWordIsPresent(lettersMatrix, "ph");
+        System.out.println(checkWordIsPresent(lettersMatrix, "de"));
     }
 
     /**
@@ -185,37 +185,6 @@ public class Bloco4Ex21 {
         return isFound;
     }
 
-    private static boolean checkUpFromSecondaryDiagonal(char[][] lettersMatrix, String word) {
-        char[] wordCharactersArray = getCharArrayFromStringWord(word);
-        int[][] maskMatrix = findMaskMatrixFromProvidedWord(lettersMatrix, wordCharactersArray);
-
-        char[] foundWords = new char[word.length()];
-        boolean isFound = false;
-
-        int addedSequentially = 0;
-        int startColumnIndex = maskMatrix.length - 1;
-
-        while (startColumnIndex >= 0) {
-            for (int i = maskMatrix.length - 1, j = startColumnIndex - 1; i >= 0; i--, j--) {
-                if (isFound) break;
-
-                if (j >= 0) {
-                    System.out.println("second and up: " + lettersMatrix[i][j]);
-                    if (maskMatrix[i][j] == 1) {
-                        addedSequentially++;
-                        if (addedSequentially == word.length()) {
-                            System.out.println("Up from secondary diag");
-                            isFound = true;
-                        }
-                    } else addedSequentially = 0;
-                }
-            }
-            startColumnIndex--;
-        }
-
-        return isFound;
-    }
-
     private static boolean checkSecondaryDiagonalAndDown(char[][] lettersMatrix, String word) {
         char[] wordCharactersArray = getCharArrayFromStringWord(word);
         int[][] maskMatrix = findMaskMatrixFromProvidedWord(lettersMatrix, wordCharactersArray);
@@ -224,18 +193,53 @@ public class Bloco4Ex21 {
         boolean isFound = false;
 
         int addedSequentially = 0;
-        int startRowIndex = maskMatrix.length - 1;
+        int startColumnIndex = 0;
 
-        while (startRowIndex >= 0) {
-            for (int i = startRowIndex, j = maskMatrix.length - 1; i >= 0; i--, j--) {
+//           0    1    2    3
+//      0  {'a', 'b', 'c', 'd'},
+//      1  {'d', 'b', 'f', 'e'},
+//      2  {'g', 'h', 'i', 'o'},
+//      3  {'p', 'u', 'x', 'y'}
+
+        while (startColumnIndex < maskMatrix.length - 1) {
+            for (int i = maskMatrix.length - 1, j = startColumnIndex; i >= 0; i--, j++) {
                 if (isFound) break;
 
-                if (j >= 0) {
-                    System.out.println("second and down: " + lettersMatrix[i][j]);
+                if (j < maskMatrix.length) {
                     if (maskMatrix[i][j] == 1) {
                         addedSequentially++;
                         if (addedSequentially == word.length()) {
                             System.out.println("Secondary diag and down");
+                            isFound = true;
+                        }
+                    } else addedSequentially = 0;
+                }
+            }
+            startColumnIndex++;
+        }
+
+        return isFound;
+    }
+
+    private static boolean checkUpFromSecondaryDiagonal(char[][] lettersMatrix, String word) {
+        char[] wordCharactersArray = getCharArrayFromStringWord(word);
+        int[][] maskMatrix = findMaskMatrixFromProvidedWord(lettersMatrix, wordCharactersArray);
+
+        char[] foundWords = new char[word.length()];
+        boolean isFound = false;
+
+        int addedSequentially = 0;
+        int startRowIndex = maskMatrix.length - 2;
+
+        while (startRowIndex >= 0) {
+            for (int i = startRowIndex, j = 0; i >= 0; i--, j++) {
+                if (isFound) break;
+
+                if (j < maskMatrix.length) {
+                    if (maskMatrix[i][j] == 1) {
+                        addedSequentially++;
+                        if (addedSequentially == word.length()) {
+                            System.out.println("Up from secondary diag");
                             isFound = true;
                         }
                     } else addedSequentially = 0;
