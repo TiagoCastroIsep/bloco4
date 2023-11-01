@@ -3,8 +3,20 @@ package org.example;
 import java.util.Arrays;
 
 public class Bloco4Ex21 {
-    /** this method should have been matched with the checkIfRequestedWordExistsInLettersMatrix method
-     * I can refactor it later on **/
+    public static void main(String[] args) {
+        char[][] lettersMatrix = {
+                {'a', 'b', 'c', 'd'},
+                {'d', 'b', 'f', 'e'},
+                {'g', 'h', 'i', 'o'},
+                {'p', 'u', 'x', 'y'}
+        };
+        checkExists(lettersMatrix, "abi");
+    }
+
+    /**
+     * this method should have been matched with the checkIfRequestedWordExistsInLettersMatrix method
+     * I can refactor it later on
+     **/
     // Alinea a)
     public static int[][] getMaskMatrixFromSingleChar(char[][] lettersMatrix, char requestedLetter) {
         if (lettersMatrix.length == 0) return null;
@@ -37,6 +49,60 @@ public class Bloco4Ex21 {
         int sum = sumAllMatrixElements(maskMatrix);
 
         return sum == maskMatrix.length;
+    }
+
+    public static void checkExists(char[][] lettersMatrix, String word) {
+        char[] wordCharactersArray = getCharArrayFromStringWord(word);
+        int[][] maskMatrix = findMaskMatrixFromProvidedWord(lettersMatrix, wordCharactersArray);
+
+        char[] foundWords = new char[word.length()];
+        boolean isFound = false;
+
+        /**proper way to check rows**/
+        for (int i = 0; i < maskMatrix.length; i++) {
+            if (isFound) break;
+            int addedSequentially = 0;
+            for (int j = 0; j < maskMatrix.length; j++) {
+                if (maskMatrix[i][j] == 1) {
+                    addedSequentially++;
+                    if (addedSequentially == word.length()) {
+                        System.out.println("Found it!");
+                        isFound = true;
+                        break;
+                    }
+                } else addedSequentially = 0;
+            }
+        }
+
+        /**proper way to check columns**/
+        for (int i = 0; i < maskMatrix.length; i++) {
+            if (isFound) break;
+            int addedSequentially = 0;
+            for (int j = 0; j < maskMatrix.length; j++) {
+                if (maskMatrix[j][i] == 1) {
+                    addedSequentially++;
+                    if (addedSequentially == word.length()) {
+                        System.out.println("Found it!");
+                        isFound = true;
+                        break;
+                    }
+                } else addedSequentially = 0;
+            }
+        }
+
+        /**proper way to check diagonals TODO: in development, only done principal diagonal **/
+        int addedSequentially = 0;
+        for (int i = 0, j = 0; i < maskMatrix.length; i++, j++) {
+            if (isFound) break;
+
+            if (maskMatrix[i][j] == 1) {
+                addedSequentially++;
+                if (addedSequentially == word.length()) {
+                    System.out.println("Found it!");
+                    isFound = true;
+                }
+            } else addedSequentially = 0;
+        }
     }
 
     private static int sumAllMatrixElements(int[][] maskMatrix) {
