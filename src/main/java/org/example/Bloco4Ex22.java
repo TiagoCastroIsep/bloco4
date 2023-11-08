@@ -9,9 +9,7 @@ public class Bloco4Ex22 {
         if (maskMatrix == null) return false;
 
         for (int[] matrix : maskMatrix) {
-            for (int i : matrix) {
-                if (i == 0) return false;
-            }
+            for (int i : matrix) if (i == 0) return false;
         }
 
         return true;
