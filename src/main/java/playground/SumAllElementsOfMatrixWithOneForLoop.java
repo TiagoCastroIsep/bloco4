@@ -1,4 +1,4 @@
-package org.example.playground;
+package playground;
 
 public class SumAllElementsOfMatrixWithOneForLoop {
     private static int sum = 0;

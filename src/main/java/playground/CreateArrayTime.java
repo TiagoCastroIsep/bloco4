@@ -1,4 +1,4 @@
-package org.example.playground;
+package playground;
 
 public class CreateArrayTime {
     public static void main(String[] args) {

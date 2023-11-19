@@ -1,4 +1,4 @@
-package org.example.playground;
+package playground;
 
 import org.example.Bloco4Ex22;
 

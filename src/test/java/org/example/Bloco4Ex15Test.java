@@ -2,15 +2,14 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 class Bloco4Ex15Test {
     @Test
     public void shouldReturnFalseForEmptyMatrix_checkIfMatrixEveryMatrixLineHasTheSameNumberOfColumns() {
         int[][] matrix = new int[0][0];
 
-        assertFalse(Bloco4Ex15.checkIfMatrixEveryMatrixLineHasTheSameNumberOfColumns(matrix));
+        assertFalse(Bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
     }
 
     @Test
@@ -21,7 +20,18 @@ class Bloco4Ex15Test {
                 {1, 2, 3, 4}
         };
 
-        assertFalse(Bloco4Ex15.checkIfMatrixEveryMatrixLineHasTheSameNumberOfColumns(matrix));
+        assertFalse(Bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
+    }
+
+    @Test
+    public void shouldReturnTrueForMatrixWithDifferentNumberOfColumns_checkIfMatrixEveryMatrixLineHasTheSameNumberOfColumns() {
+        int[][] matrix = {
+                {1, 2, 3},
+                {1, 2, 3},
+                {1, 2, 3}
+        };
+
+        assertTrue(Bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
     }
 
     @Test

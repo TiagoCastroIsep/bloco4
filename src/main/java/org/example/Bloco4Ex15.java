@@ -1,7 +1,7 @@
 package org.example;
 
 public class Bloco4Ex15 {
-    public static boolean checkIfMatrixEveryMatrixLineHasTheSameNumberOfColumns(int[][] matrix) {
+    public static boolean checkMatrixLinesHasTheSameNumberOfColumns(int[][] matrix) {
         if (matrix.length == 0) return false;
 
         int numberOfColumns = matrix[0].length;
