@@ -34,9 +34,8 @@ class Bloco4Ex10Test {
     @Test
     public void shouldReturnNullForNegativeMinLimit() {
         int n = 3;
-        int minLimit = 10;
+        int minLimit = -1;
         int maxLimit = 10;
-        int[] expected = new int[0];
-        assertArrayEquals(expected, Bloco4Ex10.getMultiplesOfN(n, minLimit, maxLimit));
+        assertNull(Bloco4Ex10.getMultiplesOfN(n, minLimit, maxLimit));
     }
 }

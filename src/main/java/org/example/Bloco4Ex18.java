@@ -1,20 +1,21 @@
 package org.example;
 
 public class Bloco4Ex18 {
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static int getMinNumberInArray(int[] numbers, boolean isMinValue) {
-        return Bloco4Utils.getMinOrMaxValueFromArray(numbers, isMinValue);
+        return bloco4Utils.getMinOrMaxValueFromArray(numbers, isMinValue);
     }
 
     public static double getAverageFromArrayValues(int[] numbers) {
-        return Bloco4Utils.getAverageFromArrayValues(numbers);
+        return bloco4Utils.getAverageFromArrayValues(numbers);
     }
 
     public static int getProductOfArrayElements(int[] numbers) {
-        return Bloco4Utils.getProductOfArrayElements(numbers);
+        return bloco4Utils.getProductOfArrayElements(numbers);
     }
 
     public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
-        return Bloco4Utils.getSetOfNonRepeatedNumbers(numbers);
+        return bloco4Utils.getSetOfNonRepeatedNumbers(numbers);
     }
 
     public static int[] getPrimeNumbersFromArray(int[] numbers) {
@@ -23,16 +24,14 @@ public class Bloco4Ex18 {
         int[] primeNumbers = new int[numbers.length];
         int primeNumbersIndex = 0;
         for (int number : numbers) {
-            if (Bloco4Utils.isPrimeNumber(number)) {
+            if (bloco4Utils.isPrimeNumber(number)) {
                 primeNumbers[primeNumbersIndex] = number;
                 primeNumbersIndex++;
             }
         }
 
         /** cleanup **/
-        int[] primeNumbersCleanedUpList = getTrimmedArrayOfPrimeNumbers(primeNumbersIndex, primeNumbers);
-
-        return primeNumbersCleanedUpList;
+        return getTrimmedArrayOfPrimeNumbers(primeNumbersIndex, primeNumbers);
     }
 
     private static int[] getTrimmedArrayOfPrimeNumbers(int primeNumbersIndex, int[] primeNumbers) {
@@ -45,7 +44,7 @@ public class Bloco4Ex18 {
     }
 
     public static int[] getPrincipalDiagonalOfMatrix(int[][] matrix) {
-        if (!validateMatrixForRectangularSquareAndLength(matrix)) return null;
+        if (!bloco4Utils.checkIfMatrixIsSquare(matrix)) return null;
 
         int[] principalDiagonal = new int[matrix.length];
         for (int i = 0; i < matrix.length; i++) principalDiagonal[i] = matrix[i][i];
@@ -54,21 +53,13 @@ public class Bloco4Ex18 {
     }
 
     public static int[] getSecondDiagonalOfMatrix(int[][] matrix) {
-        if (!validateMatrixForRectangularSquareAndLength(matrix)) return null;
+        if (!bloco4Utils.checkIfMatrixIsSquare(matrix)) return null;
 
         int[] secondDiagonal = new int[matrix.length];
         for (int i = 0; i < matrix.length; i++)
             secondDiagonal[i] = matrix[i][matrix.length - 1 - i];
 
         return secondDiagonal;
-    }
-
-    public static boolean validateMatrixForRectangularSquareAndLength(int[][] matrix) {
-        if (matrix[0].length == 0) return false;
-        if (matrix[1].length == 0) return false;
-        if (!Bloco4Utils.checkIfMatrixIsRectangular(matrix) &&
-                !Bloco4Utils.checkIfMatrixIsSquare(matrix)) return false;
-        return true;
     }
 
     public static boolean checkIsIdentityMatrix(int[][] matrix) {
@@ -93,7 +84,7 @@ public class Bloco4Ex18 {
         int[][] reversedMatrix = new int[matrix.length][matrix.length];
         int reversedMatrixIndex = matrix.length - 1;
         for (int i = 0; i < matrix.length; i++) {
-            reversedMatrix[i] = Bloco4Utils.getReversedArray(matrix[reversedMatrixIndex]);
+            reversedMatrix[i] = bloco4Utils.getReversedArray(matrix[reversedMatrixIndex]);
             reversedMatrixIndex--;
         }
 

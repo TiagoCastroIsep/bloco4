@@ -12,12 +12,12 @@ class Bloco4Ex17Test {
     }
 
     @Test
-    public void shouldReturnFalseForSquareMatrix() {
+    public void shouldReturnTrueForSquareMatrix() {
         int[][] matrix = {
                 {1, 2},
                 {1, 2}
         };
-        assertFalse(Bloco4Ex17.checkIfMatrixIsRectangular(matrix));
+        assertTrue(Bloco4Ex17.checkIfMatrixIsRectangular(matrix));
     }
 
     @Test

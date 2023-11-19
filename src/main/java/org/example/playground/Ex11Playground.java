@@ -6,7 +6,7 @@ import org.example.Bloco4Utils;
 import java.util.*;
 
 public class Ex11Playground {
-
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static void main(String[] args) {
         int a = 4;
         int b = 12;
@@ -16,7 +16,7 @@ public class Ex11Playground {
 
     public static int[] getCommonMultiplesOfNumbersInRange(int a, int b, int[] numbers) {
         if (numbers.length == 0) return null;
-        int[] limits = Bloco4Utils.checkAndCorrectLimits(a, b);
+        int[] limits = bloco4Utils.checkAndCorrectLimits(a, b);
         if (limits == null) return null;
 
         int minLimit = limits[0];

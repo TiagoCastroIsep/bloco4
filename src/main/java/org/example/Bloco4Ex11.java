@@ -3,10 +3,10 @@ package org.example;
 import java.util.*;
 
 public class Bloco4Ex11 {
-
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static int[] getCommonMultiplesOfNumbersInRange(int a, int b, int[] numbers) {
         if (numbers.length == 0) return null;
-        int[] limits = Bloco4Utils.checkAndCorrectLimits(a, b);
+        int[] limits = bloco4Utils.checkAndCorrectLimits(a, b);
         if (limits == null) return null;
 
         int minLimit = limits[0];

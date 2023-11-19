@@ -1,7 +1,8 @@
 package org.example;
 
 public class Bloco4Ex5 {
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static int[] getNotPairsArrayFromArrayOfInts(int[] numbers) {
-        return Bloco4Utils.reducedArrayOfPairsOrNotPairs(numbers, false);
+        return bloco4Utils.reducedArrayOfPairsOrNotPairs(numbers, false);
     }
 }

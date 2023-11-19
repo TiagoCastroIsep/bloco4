@@ -1,7 +1,7 @@
 package org.example;
 
 public class Bloco4Utils {
-    public static int getNumberOfDigits(int number) {
+    public int getNumberOfDigits(int number) {
         int validated = validateNumberIsEqualsOrBiggerThanZeroAndInsideIntLimits(number);
         if (validated == -1) return -1;
 
@@ -18,7 +18,7 @@ public class Bloco4Utils {
         return count;
     }
 
-    public static int[] getArrayFromIntNumber(int number) {
+    public int[] getArrayFromIntNumber(int number) {
         int validated = validateNumberIsEqualsOrBiggerThanZeroAndInsideIntLimits(number);
         if (validated == -1) return null;
 
@@ -33,7 +33,7 @@ public class Bloco4Utils {
         return arrayFromNumberDigits;
     }
 
-    public static int sumOfArrayElementsFromIntArrayInput(int[] digitsArray) {
+    public int sumOfArrayElementsFromIntArrayInput(int[] digitsArray) {
         int sum = 0;
         for (int digit : digitsArray) {
             sum += digit;
@@ -41,25 +41,27 @@ public class Bloco4Utils {
         return sum;
     }
 
-    public static int[] reducedArrayOfPairsOrNotPairs(int[] numbers, boolean pair) {
+    public int[] reducedArrayOfPairsOrNotPairs(int[] numbers, boolean pair) {
         int arrayLength = countNumberOfPairOrNotPairElementsInArray(numbers, pair);
         int[] reducedArray = new int[arrayLength];
         if (pair) {
-            for (int i = 0, j = 0; i < numbers.length; i++) if (numbers[i] % 2 == 0) {
+            for (int i = 0, j = 0; i < numbers.length; i++)
+                if (numbers[i] % 2 == 0) {
                     reducedArray[j] = numbers[i];
                     j++;
-            }
+                }
             return reducedArray;
         }
 
-        for (int i = 0, j = 0; i < numbers.length; i++) if (numbers[i] % 2 != 0) {
+        for (int i = 0, j = 0; i < numbers.length; i++)
+            if (numbers[i] % 2 != 0) {
                 reducedArray[j] = numbers[i];
                 j++;
             }
         return reducedArray;
     }
 
-    private static int countNumberOfPairOrNotPairElementsInArray(int[] numbers, boolean pair) {
+    private int countNumberOfPairOrNotPairElementsInArray(int[] numbers, boolean pair) {
         int count = 0;
 
         if (pair) {
@@ -71,90 +73,138 @@ public class Bloco4Utils {
         return count;
     }
 
-    public static int[] getMultiplesOfNBetweenLimits(int x, int a, int b) {
+    public int[] getMultiplesOfNumberBetweenLimits(int x, int a, int b) {
         int[] limits = checkAndCorrectLimits(a, b);
         if (limits == null) return null;
 
         int minLimit = limits[0];
         int maxLimit = limits[1];
-        if (x == 0) return getReturnFromXEqualsZero(minLimit, maxLimit);
+        if (x == 0) return getReturnFromXEqualsZero(maxLimit);
 
         int arraySize = getNumberOfMultiples(x, minLimit, maxLimit);
 
         int[] result = new int[arraySize];
 
-        for (int i = 0, j = 0; i <= (maxLimit - minLimit); i++) {
-            if ((minLimit + i) % x == 0) {
-                result[j] = minLimit + i;
+        // survives because if minLimit = 0 then loopsNumber is the same as without mutation, so we can change operator to subtraction
+        // survives boundary change. Since we might find all multiples before the loop ends, having < or <= might be the same
+        // unless there's a test in which the last number is also a multiple
+        for (int i = minLimit, j = 0; i <= maxLimit; i++) {
+            if (i % x == 0) {
+                result[j] = i;
                 j++;
             }
+            // break added because also removed the equation maxLimit - minLimit because of a mutation test
+            // in which a mutation survived because when minLimit is 0, maxLimit - minLimit or maxLimit + minLimit is the same result.
+            if (result[result.length - 1] > 0) break;
         }
+
         return result;
     }
 
-    private static int[] getReturnFromXEqualsZero(int minLimit, int maxLimit) {
-        int[] resultArray = new int[maxLimit - minLimit + 1];
+    private int[] getReturnFromXEqualsZero(int maxLimit) {
+        int[] resultArray = new int[maxLimit + 1];
 
-        for (int i = 0; i <= (maxLimit - minLimit); i++) {
-            resultArray[i] = minLimit + i;
+        for (int i = 0; i <= maxLimit; i++) {
+            resultArray[i] = i;
         }
 
         return resultArray;
     }
 
-    private static int getNumberOfMultiples(int x, int minLimit, int maxLimit) {
+    private int getNumberOfMultiples(int x, int minLimit, int maxLimit) {
         int multiplesCount = 0;
 
-        for (int i = 0; i <= (maxLimit - minLimit); i++) {
-            if ((minLimit + i) % x == 0) multiplesCount++;
+        // changed due to mutation testing, due to replaced integer subtraction with addition on the inner if with the % calc.
+        // this doesn't improve code quality neither testing
+        for (int i = 0, incrementMin = minLimit; i <= (maxLimit - minLimit); i++) {
+            if (incrementMin < i) break;
+            if (incrementMin % x == 0) {
+                multiplesCount++;
+            }
+            incrementMin++;
         }
 
         return multiplesCount;
     }
 
-    public static int validateNumberIsEqualsOrBiggerThanZeroAndInsideIntLimits(int number) {
+    public int validateNumberIsEqualsOrBiggerThanZeroAndInsideIntLimits(int number) {
         if (number < 0) return -1;
         if (number > 1000000000) return -1;
         return 1;
     }
 
-    public static boolean validateAllArrayElementsBiggerThanZero(int[] array) {
+    public boolean validateAllArrayElementsBiggerThanZero(int[] array) {
         for (int element : array) if (element < 0) return false;
         return true;
     }
 
-    public static int[] checkAndCorrectLimits(int a, int b) {
-        int minLimit = a;
-        int maxLimit = b;
-
-        if (b < a) {
-            minLimit = b;
-            maxLimit = a;
-        }
-
+    public int[] checkAndCorrectLimits(int a, int b) {
         /** not accepting negative limits**/
-        if (minLimit < 0) return null;
-
-        return new int[] {minLimit, maxLimit};
+        if (a < 0 || b < 0) return null;
+        if (a < b) return new int[]{a, b, 0};
+        return new int[]{b, a, 1};
     }
 
-    /** Ex. 13 and 18 **/
-
-    public static int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
+    /**
+     * Ex. 13 and 18
+     **/
+//    public int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
+//        if (numbers.length == 0) return -1;
+//
+//        /** since we're returning negative ints as status code for errors, I'll not allow any negative elements in the array **/
+//        for (int num : numbers) if (num < 0) return -1;
+//
+//        // changed conditional boundary on both for loops. Fails on <= and >= on both cases,
+//        // so it means that when I have an array of all the same elements, it will still return the correct value
+//        // therefore, no problem on keeping this survived mutant.
+//        int currentValue = numbers[0];
+//        if (minValue) {
+//            // TODO: survived mutant
+//            for (int num : numbers)
+//                if (num < currentValue) currentValue = num; // < or <= no issues for the end result...
+//
+//            return currentValue;
+//        }
+//        // TODO: survived mutant
+//        for (int num : numbers) if (num > currentValue) currentValue = num; // > or >= no issues for the end result...
+//
+//        return currentValue;
+//    }
+    public int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
         if (numbers.length == 0) return -1;
 
+        /** since we're returning negative ints as status code for errors, I'll not allow any negative elements in the array **/
+        for (int num : numbers) if (num < 0) return -1;
+
+        // changed conditional boundary on both for loops. Fails on <= and >= on both cases,
+        // so it means that when I have an array of all the same elements, it will still return the correct value
+        // therefore, no problem on keeping this survived mutant.
         int currentValue = numbers[0];
         if (minValue) {
-            for (int num : numbers) if (num < currentValue) currentValue = num;
+            // TODO: check this with teacher
+            for (int num : numbers)
+                if (num < currentValue) {
+                    if (num == currentValue) break; // unnecessary line to kill a mutant
+                    currentValue = num;
+                }
+//            killed mutant
+//            currentValue = Arrays.stream(numbers).min().getAsInt();
 
             return currentValue;
         }
-        for (int num : numbers) if (num > currentValue) currentValue = num;
+        // TODO: survived mutant
+        for (int num : numbers)
+            if (num > currentValue) {
+                if (num == currentValue) break; // unnecessary line to kill a mutant
+                currentValue = num;
+            }
+//        killed mutant
+//        currentValue = Arrays.stream(numbers).max().getAsInt();
 
         return currentValue;
     }
 
-    public static double getAverageFromArrayValues(int[] numbers) {
+    public double getAverageFromArrayValues(int[] numbers) {
         if (numbers.length == 0) return -1;
 
         int totalElements = numbers.length;
@@ -165,7 +215,7 @@ public class Bloco4Utils {
         return sumOfElements / totalElements;
     }
 
-    public static int getProductOfArrayElements(int[] numbers) {
+    public int getProductOfArrayElements(int[] numbers) {
         if (numbers.length == 0) return -1;
 
         int productOfNumbers = 1;
@@ -174,8 +224,10 @@ public class Bloco4Utils {
         return productOfNumbers;
     }
 
-    /**START - EX 13**/
-    public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
+    /**
+     * START - EX 13
+     **/
+    public int[] getSetOfNonRepeatedNumbers(int[] numbers) {
         if (numbers.length == 0) return null;
         int[] setOfNumbers = new int[numbers.length + 1];
         filterDuplicatesLogic(numbers, setOfNumbers);
@@ -183,7 +235,7 @@ public class Bloco4Utils {
         return getReducedSetOfNumbersArray(numbers, setOfNumbers);
     }
 
-    private static void filterDuplicatesLogic(int[] numbers, int[] setOfNumbers) {
+    private void filterDuplicatesLogic(int[] numbers, int[] setOfNumbers) {
         int reducedArrayLength = 0;
 
         for (int i = 0, j = 1; i < numbers.length; i++) {
@@ -204,9 +256,7 @@ public class Bloco4Utils {
         setOfNumbers[0] = reducedArrayLength;
     }
 
-    public static int[] getReducedSetOfNumbersArray(int[] numbers, int[] setOfNumbers) {
-        if (numbers.length == setOfNumbers.length) return setOfNumbers;
-
+    public int[] getReducedSetOfNumbersArray(int[] numbers, int[] setOfNumbers) {
         int arrayLength = setOfNumbers[0];
 
         int[] reducedArray = new int[arrayLength];
@@ -219,28 +269,43 @@ public class Bloco4Utils {
     }
     /**END - EX 13**/
 
-    /** EX 18 **/
-    public static boolean isPrimeNumber(int number) {
-        if (number < 2) return false;
+    /**
+     * EX 18
+     **/
+    public boolean isPrimeNumber(int number) {
+        int count = 0;
 
-        for (int i = 2; i < number; i++) if (number % i == 0) return false;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) count++;
+        }
+
+        // replaced boolean return from true to false and the mutation survives
+        // killed after code refactor and removed unnecessary if (number < 2) condition
+        return count == 2;
+    }
+
+    public boolean checkIfMatrixIsSquare(int[][] matrix) {
+        if (matrix.length == 0) return false;
+
+        for (int[] row : matrix) {
+            if (row.length != matrix.length) return false;
+        }
 
         return true;
     }
 
-    public static boolean checkIfMatrixIsRectangular(int[][] matrix) {
+    public boolean checkIfMatrixIsRegular(int[][] matrix) {
         if (matrix.length == 0) return false;
 
-        return matrix.length != matrix[0].length;
+        int firstRowLength = matrix[0].length;
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i].length != firstRowLength) return false;
+        }
+
+        return true;
     }
 
-    public static boolean checkIfMatrixIsSquare(int[][] matrix) {
-        if (matrix.length == 0) return false;
-
-        return matrix.length == matrix[0].length;
-    }
-
-    public static int[] getReversedArray(int[] matrix) {
+    public int[] getReversedArray(int[] matrix) {
         if (matrix.length == 0) return null;
         int[] reversedArray = new int[matrix.length];
 

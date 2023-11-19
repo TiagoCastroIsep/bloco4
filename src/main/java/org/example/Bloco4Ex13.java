@@ -3,21 +3,21 @@ package org.example;
 import java.util.*;
 
 public class Bloco4Ex13 {
-
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
-        return Bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue);
+        return bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue);
     }
 
     public static double getAverageFromArrayValues(int[] numbers) {
-        return Bloco4Utils.getAverageFromArrayValues(numbers);
+        return bloco4Utils.getAverageFromArrayValues(numbers);
     }
 
     public static int getProductOfArrayElements(int[] numbers) {
-        return Bloco4Utils.getProductOfArrayElements(numbers);
+        return bloco4Utils.getProductOfArrayElements(numbers);
     }
 
     public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
-        return Bloco4Utils.getSetOfNonRepeatedNumbers(numbers);
+        return bloco4Utils.getSetOfNonRepeatedNumbers(numbers);
     }
 
     public static int[] getReversedNumbers(int[] numbers) {

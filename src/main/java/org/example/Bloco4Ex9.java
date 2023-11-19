@@ -1,7 +1,8 @@
 package org.example;
 
 public class Bloco4Ex9 {
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static int[] getMultiplesOfNEquals3(int n, int a, int b) {
-        return Bloco4Utils.getMultiplesOfNBetweenLimits(n, a, b);
+        return bloco4Utils.getMultiplesOfNumberBetweenLimits(n, a, b);
     }
 }

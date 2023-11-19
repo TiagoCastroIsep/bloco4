@@ -1,11 +1,12 @@
 package org.example;
 
 public class Bloco4Ex12 {
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static boolean checkCompleteNumberIsPalindrome(int number) {
-        if (Bloco4Utils.validateNumberIsEqualsOrBiggerThanZeroAndInsideIntLimits(number) == -1) return false;
+        if (bloco4Utils.validateNumberIsEqualsOrBiggerThanZeroAndInsideIntLimits(number) == -1) return false;
         if (number == 0) return true;
 
-        int[] digitsArray = Bloco4Utils.getArrayFromIntNumber(number);
+        int[] digitsArray = bloco4Utils.getArrayFromIntNumber(number);
 
         if (digitsArray == null) return false;
 

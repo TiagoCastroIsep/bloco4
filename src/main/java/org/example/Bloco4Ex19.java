@@ -1,8 +1,9 @@
 package org.example;
 
 public class Bloco4Ex19 {
+    static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public static int getMatrixDeterminantWithLaplaceTheorem(int[][] matrix) {
-        if (!Bloco4Ex18.validateMatrixForRectangularSquareAndLength(matrix)) return -1;
+        if (!bloco4Utils.checkIfMatrixIsSquare(matrix)) return -1;
 
         int determinant;
         if (matrix.length == 1) determinant = matrix[0][0];
