@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Bloco4Ex17Test {
+    static final Bloco4Ex17 bloco4Ex17 = new Bloco4Ex17();
     @Test
     public void shouldReturnFalseForEmptyMatrix() {
         int[][] matrix = new int[0][0];
-        assertFalse(Bloco4Ex17.checkIfMatrixIsRectangular(matrix));
+        assertFalse(bloco4Ex17.checkIfMatrixIsRectangular(matrix));
     }
 
     @Test
@@ -17,7 +18,7 @@ class Bloco4Ex17Test {
                 {1, 2},
                 {1, 2}
         };
-        assertTrue(Bloco4Ex17.checkIfMatrixIsRectangular(matrix));
+        assertTrue(bloco4Ex17.checkIfMatrixIsRectangular(matrix));
     }
 
     @Test
@@ -28,7 +29,7 @@ class Bloco4Ex17Test {
                 {1, 2, 3, 4}
         };
 
-        assertFalse(Bloco4Ex17.checkIfMatrixIsRectangular(matrix));
+        assertFalse(bloco4Ex17.checkIfMatrixIsRectangular(matrix));
     }
 
     @Test
@@ -37,6 +38,6 @@ class Bloco4Ex17Test {
                 {1, 2, 3},
                 {1, 2, 3}
         };
-        assertFalse(Bloco4Ex17.checkIfMatrixIsRectangular(matrix));
+        assertFalse(bloco4Ex17.checkIfMatrixIsRectangular(matrix));
     }
 }

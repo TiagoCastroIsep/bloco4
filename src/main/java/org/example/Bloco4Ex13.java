@@ -4,23 +4,23 @@ import java.util.*;
 
 public class Bloco4Ex13 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
-    public static int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
+    public int getMinOrMaxValueFromArray(int[] numbers, boolean minValue) {
         return bloco4Utils.getMinOrMaxValueFromArray(numbers, minValue);
     }
 
-    public static double getAverageFromArrayValues(int[] numbers) {
+    public double getAverageFromArrayValues(int[] numbers) {
         return bloco4Utils.getAverageFromArrayValues(numbers);
     }
 
-    public static int getProductOfArrayElements(int[] numbers) {
+    public int getProductOfArrayElements(int[] numbers) {
         return bloco4Utils.getProductOfArrayElements(numbers);
     }
 
-    public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
+    public int[] getSetOfNonRepeatedNumbers(int[] numbers) {
         return bloco4Utils.getSetOfNonRepeatedNumbers(numbers);
     }
 
-    public static int[] getReversedNumbers(int[] numbers) {
+    public int[] getReversedNumbers(int[] numbers) {
         if (numbers.length == 0) return null;
 
         int[] reversedNumbers = new int[numbers.length];

@@ -2,7 +2,7 @@ package org.example;
 
 public class Bloco4Ex17 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
-    public static boolean checkIfMatrixIsRectangular(int[][] matrix) {
+    public boolean checkIfMatrixIsRectangular(int[][] matrix) {
         return bloco4Utils.checkIfMatrixIsSquare(matrix);
     }
 }

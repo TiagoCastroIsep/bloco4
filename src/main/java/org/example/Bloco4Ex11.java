@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Bloco4Ex11 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
-    public static int[] getCommonMultiplesOfNumbersInRange(int a, int b, int[] numbers) {
+    public int[] getCommonMultiplesOfNumbersInRange(int a, int b, int[] numbers) {
         if (numbers.length == 0) return null;
         int[] limits = bloco4Utils.checkAndCorrectLimits(a, b);
         if (limits == null) return null;
@@ -20,7 +20,7 @@ public class Bloco4Ex11 {
         return commonMultiples;
     }
 
-    private static void findCommonMultiples(int[] numbers, int minLimit, int maxLimit, int[] commonMultiples) {
+    private void findCommonMultiples(int[] numbers, int minLimit, int maxLimit, int[] commonMultiples) {
         int k = 0;
 
         for (int i = minLimit; i <= maxLimit; i++) {
@@ -42,7 +42,7 @@ public class Bloco4Ex11 {
         }
     }
 
-    private static int getArrayLengthForCommonMultiples(int[] numbers, int minLimit, int maxLimit) {
+    private int getArrayLengthForCommonMultiples(int[] numbers, int minLimit, int maxLimit) {
         int k = 0;
         for (int i = minLimit; i <= maxLimit; i++) {
             int count = 0;

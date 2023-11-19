@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Bloco4Ex15Test {
+    static final Bloco4Ex15 bloco4Ex15 = new Bloco4Ex15();
     @Test
     public void shouldReturnFalseForEmptyMatrix_checkIfMatrixEveryMatrixLineHasTheSameNumberOfColumns() {
         int[][] matrix = new int[0][0];
 
-        assertFalse(Bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
+        assertFalse(bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
     }
 
     @Test
@@ -20,7 +21,7 @@ class Bloco4Ex15Test {
                 {1, 2, 3, 4}
         };
 
-        assertFalse(Bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
+        assertFalse(bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
     }
 
     @Test
@@ -31,7 +32,7 @@ class Bloco4Ex15Test {
                 {1, 2, 3}
         };
 
-        assertTrue(Bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
+        assertTrue(bloco4Ex15.checkMatrixLinesHasTheSameNumberOfColumns(matrix));
     }
 
     @Test
@@ -43,7 +44,7 @@ class Bloco4Ex15Test {
         };
 
         int expected = 3;
-        assertEquals(expected, Bloco4Ex15.getNumberOfColumnsInMatrix(matrix));
+        assertEquals(expected, bloco4Ex15.getNumberOfColumnsInMatrix(matrix));
     }
 
     @Test
@@ -51,6 +52,6 @@ class Bloco4Ex15Test {
         int[][] matrix = new int[0][0];
 
         int expected = -1;
-        assertEquals(expected, Bloco4Ex15.getNumberOfColumnsInMatrix(matrix));
+        assertEquals(expected, bloco4Ex15.getNumberOfColumnsInMatrix(matrix));
     }
 }

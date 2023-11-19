@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Bloco4Ex22Test {
+    static final Bloco4Ex22 bloco4Ex22 = new Bloco4Ex22();
     @Test
     void shouldReturnMaskMatrixWithFreeSlotsForNumbers() {
         int[][] gameMatrix = {
@@ -29,19 +30,19 @@ class Bloco4Ex22Test {
                 {1, 1, 0, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 0, 1, 1}
         };
-        assertArrayEquals(expected, Bloco4Ex22.getFreeSlotsMaskMatrix(gameMatrix));
+        assertArrayEquals(expected, bloco4Ex22.getFreeSlotsMaskMatrix(gameMatrix));
     }
 
     @Test
     void shouldReturnNullForEmptyGameMatrix() {
         int[][] gameMatrix = {};
-        assertNull(Bloco4Ex22.getFreeSlotsMaskMatrix(gameMatrix));
+        assertNull(bloco4Ex22.getFreeSlotsMaskMatrix(gameMatrix));
     }
 
     @Test
     void shouldReturnNullForNotSquareGameMatrix() {
         int[][] gameMatrix = {{1, 1}};
-        assertNull(Bloco4Ex22.getFreeSlotsMaskMatrix(gameMatrix));
+        assertNull(bloco4Ex22.getFreeSlotsMaskMatrix(gameMatrix));
     }
 
     @Test
@@ -59,7 +60,7 @@ class Bloco4Ex22Test {
         };
         int row = 1;
         int[] expected = {9, 4, 8, 2, 1, 7, 5};
-        assertArrayEquals(expected, Bloco4Ex22.getAlreadyFilledSlotsArray(gameMatrix, row, true));
+        assertArrayEquals(expected, bloco4Ex22.getAlreadyFilledSlotsArray(gameMatrix, row, true));
     }
 
     @Test
@@ -77,7 +78,7 @@ class Bloco4Ex22Test {
         };
         int column = 0;
         int[] expected = {9, 6, 1, 3, 4, 7};
-        assertArrayEquals(expected, Bloco4Ex22.getAlreadyFilledSlotsArray(gameMatrix, column, false));
+        assertArrayEquals(expected, bloco4Ex22.getAlreadyFilledSlotsArray(gameMatrix, column, false));
     }
 
     @Test
@@ -99,7 +100,7 @@ class Bloco4Ex22Test {
                 {4, 8},
                 {2, 5, 8}
         };
-        assertArrayEquals(expected, Bloco4Ex22.getPlayerChoicesForGivenSelection(gameMatrix, rowSelected, columnSelected));
+        assertArrayEquals(expected, bloco4Ex22.getPlayerChoicesForGivenSelection(gameMatrix, rowSelected, columnSelected));
     }
 
     @Test
@@ -117,7 +118,7 @@ class Bloco4Ex22Test {
         };
         int rowSelected = 0;
         int columnSelected = 1;
-        assertNull(Bloco4Ex22.getPlayerChoicesForGivenSelection(gameMatrix, rowSelected, columnSelected));
+        assertNull(bloco4Ex22.getPlayerChoicesForGivenSelection(gameMatrix, rowSelected, columnSelected));
     }
 
     @Test
@@ -136,7 +137,7 @@ class Bloco4Ex22Test {
         int rowSelected = 0;
         int columnSelected = 0;
         int numberSelected = 8; //4 and 8 are possible according to row lookup.
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertTrue(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -155,7 +156,7 @@ class Bloco4Ex22Test {
         int rowSelected = 0;
         int columnSelected = 7;
         int numberSelected = 4; //4 and 8 are possible according to row lookup.
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertTrue(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -174,7 +175,7 @@ class Bloco4Ex22Test {
         int rowSelected = 5;
         int columnSelected = 0;
         int numberSelected = 2;
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertTrue(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -193,7 +194,7 @@ class Bloco4Ex22Test {
         int rowSelected = 8;
         int columnSelected = 5;
         int numberSelected = 8;
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertTrue(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -212,7 +213,7 @@ class Bloco4Ex22Test {
         int rowSelected = 3;
         int columnSelected = 5;
         int numberSelected = 7;
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertTrue(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -231,7 +232,7 @@ class Bloco4Ex22Test {
         int rowSelected = 5;
         int columnSelected = 7;
         int numberSelected = 3;
-        assertTrue(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertTrue(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -250,7 +251,7 @@ class Bloco4Ex22Test {
         int rowSelected = -1;
         int columnSelected = 5;
         int numberSelected = 5;
-        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertFalse(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -269,7 +270,7 @@ class Bloco4Ex22Test {
         int rowSelected = 0;
         int columnSelected = -1;
         int numberSelected = 5;
-        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertFalse(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -288,7 +289,7 @@ class Bloco4Ex22Test {
         int rowSelected = 9;
         int columnSelected = 5;
         int numberSelected = 5;
-        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertFalse(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -307,7 +308,7 @@ class Bloco4Ex22Test {
         int rowSelected = 0;
         int columnSelected = 9;
         int numberSelected = 5;
-        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertFalse(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
 
@@ -327,7 +328,7 @@ class Bloco4Ex22Test {
         int rowSelected = 0;
         int columnSelected = 5;
         int numberSelected = 5;
-        assertFalse(Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertFalse(bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -357,7 +358,7 @@ class Bloco4Ex22Test {
                 {4, 3, 0, 0, 2, 6, 9, 0, 7},
                 {7, 0, 6, 3, 1, 0, 0, 5, 2}
         };
-        assertArrayEquals(expected, Bloco4Ex22.updateGameMatrix(gameMatrix, rowSelected, columnSelected, numberSelected));
+        assertArrayEquals(expected, bloco4Ex22.updateGameMatrix(gameMatrix, rowSelected, columnSelected, numberSelected));
     }
 
     @Test
@@ -368,7 +369,7 @@ class Bloco4Ex22Test {
                 gameMatrix[i][j] = 1;
             }
         }
-        assertTrue(Bloco4Ex22.checkGameOver(gameMatrix));
+        assertTrue(bloco4Ex22.checkGameOver(gameMatrix));
     }
 
     @Test
@@ -384,6 +385,6 @@ class Bloco4Ex22Test {
                 {4, 3, 0, 0, 2, 6, 9, 0, 7},
                 {7, 0, 6, 3, 1, 0, 0, 5, 2}
         };
-        assertFalse(Bloco4Ex22.checkGameOver(gameMatrix));
+        assertFalse(bloco4Ex22.checkGameOver(gameMatrix));
     }
 }

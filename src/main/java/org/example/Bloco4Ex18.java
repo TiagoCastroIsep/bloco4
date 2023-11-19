@@ -2,23 +2,23 @@ package org.example;
 
 public class Bloco4Ex18 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
-    public static int getMinNumberInArray(int[] numbers, boolean isMinValue) {
+    public int getMinNumberInArray(int[] numbers, boolean isMinValue) {
         return bloco4Utils.getMinOrMaxValueFromArray(numbers, isMinValue);
     }
 
-    public static double getAverageFromArrayValues(int[] numbers) {
+    public double getAverageFromArrayValues(int[] numbers) {
         return bloco4Utils.getAverageFromArrayValues(numbers);
     }
 
-    public static int getProductOfArrayElements(int[] numbers) {
+    public int getProductOfArrayElements(int[] numbers) {
         return bloco4Utils.getProductOfArrayElements(numbers);
     }
 
-    public static int[] getSetOfNonRepeatedNumbers(int[] numbers) {
+    public int[] getSetOfNonRepeatedNumbers(int[] numbers) {
         return bloco4Utils.getSetOfNonRepeatedNumbers(numbers);
     }
 
-    public static int[] getPrimeNumbersFromArray(int[] numbers) {
+    public int[] getPrimeNumbersFromArray(int[] numbers) {
         if (numbers.length == 0) return null;
 
         int[] primeNumbers = new int[numbers.length];
@@ -34,7 +34,7 @@ public class Bloco4Ex18 {
         return getTrimmedArrayOfPrimeNumbers(primeNumbersIndex, primeNumbers);
     }
 
-    private static int[] getTrimmedArrayOfPrimeNumbers(int primeNumbersIndex, int[] primeNumbers) {
+    private int[] getTrimmedArrayOfPrimeNumbers(int primeNumbersIndex, int[] primeNumbers) {
         int[] primeNumbersCleanedUpList = new int[primeNumbersIndex];
         for (int i = 0; i < primeNumbersCleanedUpList.length; i++) {
             if (primeNumbers[i] == 0) break;
@@ -43,7 +43,7 @@ public class Bloco4Ex18 {
         return primeNumbersCleanedUpList;
     }
 
-    public static int[] getPrincipalDiagonalOfMatrix(int[][] matrix) {
+    public int[] getPrincipalDiagonalOfMatrix(int[][] matrix) {
         if (!bloco4Utils.checkIfMatrixIsSquare(matrix)) return null;
 
         int[] principalDiagonal = new int[matrix.length];
@@ -52,7 +52,7 @@ public class Bloco4Ex18 {
         return principalDiagonal;
     }
 
-    public static int[] getSecondDiagonalOfMatrix(int[][] matrix) {
+    public int[] getSecondDiagonalOfMatrix(int[][] matrix) {
         if (!bloco4Utils.checkIfMatrixIsSquare(matrix)) return null;
 
         int[] secondDiagonal = new int[matrix.length];
@@ -62,7 +62,7 @@ public class Bloco4Ex18 {
         return secondDiagonal;
     }
 
-    public static boolean checkIsIdentityMatrix(int[][] matrix) {
+    public boolean checkIsIdentityMatrix(int[][] matrix) {
         if (matrix[0].length == 0) return false;
         if (matrix[1].length == 0) return false;
 
@@ -77,7 +77,7 @@ public class Bloco4Ex18 {
         return true;
     }
 
-    public static int[][] getReversedMatrix(int[][] matrix) {
+    public int[][] getReversedMatrix(int[][] matrix) {
         if (matrix[0].length == 0) return null;
         if (matrix[1].length == 0) return null;
 
@@ -91,7 +91,7 @@ public class Bloco4Ex18 {
         return reversedMatrix;
     }
 
-    public static int[][] getTransposedMatrix(int[][] matrix) {
+    public int[][] getTransposedMatrix(int[][] matrix) {
         if (matrix[0].length == 0) return null;
         if (matrix[1].length == 0) return null;
 

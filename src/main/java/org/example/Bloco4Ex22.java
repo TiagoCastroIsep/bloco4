@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Bloco4Ex22 {
-    public static boolean checkGameOver(int[][] gameMatrix) {
+    public boolean checkGameOver(int[][] gameMatrix) {
         int[][] maskMatrix = getFreeSlotsMaskMatrix(gameMatrix);
         if (maskMatrix == null) return false;
 
@@ -15,7 +15,7 @@ public class Bloco4Ex22 {
         return true;
     }
 
-    public static int[][] updateGameMatrix(int[][] gameMatrix, int rowSelected, int columnSelected, int numberSelected) {
+    public int[][] updateGameMatrix(int[][] gameMatrix, int rowSelected, int columnSelected, int numberSelected) {
         if (!validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected)) return null;
         gameMatrix[rowSelected][columnSelected] = numberSelected;
         return gameMatrix;
@@ -23,7 +23,7 @@ public class Bloco4Ex22 {
 
     /** returned selection[0] is a row check for the missing numbers **/
     /** returned selection[1] is a column check for the missing numbers **/
-    public static int[][] getPlayerChoicesForGivenSelection(int[][] gameMatrix, int rowSelected, int columnSelected) {
+    public int[][] getPlayerChoicesForGivenSelection(int[][] gameMatrix, int rowSelected, int columnSelected) {
         if (gameMatrix[rowSelected][columnSelected] != 0) return null;
 
         int[] filledNumbersInRow = getAlreadyFilledSlotsArray(gameMatrix, rowSelected, true);
@@ -43,7 +43,7 @@ public class Bloco4Ex22 {
         };
     }
 
-    public static boolean validateUserSelection(int[][] gameMatrix, int rowSelected, int columnSelected, int numberSelected) {
+    public boolean validateUserSelection(int[][] gameMatrix, int rowSelected, int columnSelected, int numberSelected) {
         if (rowSelected > 8 || rowSelected < 0) return false;
         if (columnSelected > 8 || columnSelected < 0) return false;
         int[][] playersPossibleChoices = getPlayerChoicesForGivenSelection(gameMatrix, rowSelected, columnSelected);
@@ -66,7 +66,7 @@ public class Bloco4Ex22 {
 
     /** could be set to private if wasn't requested in the Exercise form
      * I'm using this! **/
-    public static int[] getAlreadyFilledSlotsArray(int[][] gameMatrix, int rowOrColumnNumber, boolean isRow) {
+    public int[] getAlreadyFilledSlotsArray(int[][] gameMatrix, int rowOrColumnNumber, boolean isRow) {
         int count = 0;
         if (isRow) {
             return runRowLookup(gameMatrix, rowOrColumnNumber, count);
@@ -77,7 +77,7 @@ public class Bloco4Ex22 {
 
     /** On the game execution, after the updateGameMatrix is done I also need to run the getFreeSlotsMaskMatrix **/
     /** could be set to private if wasn't requested in the Exercise form **/
-    public static int[][] getFreeSlotsMaskMatrix(int[][] gameMatrix) {
+    public int[][] getFreeSlotsMaskMatrix(int[][] gameMatrix) {
         if (gameMatrix.length == 0) return null;
         if (gameMatrix[0].length != gameMatrix.length) return null;
         int[][] maskMatrix = new int[gameMatrix.length][gameMatrix[0].length];
@@ -89,7 +89,7 @@ public class Bloco4Ex22 {
         return maskMatrix;
     }
 
-    private static int[] runLookupForMissingNumbers(int[] sortedAvailableNumbers) {
+    private int[] runLookupForMissingNumbers(int[] sortedAvailableNumbers) {
         int arrayLength = getMissingNumbersArrayLength(sortedAvailableNumbers);
 
         int[] missingNumbers = new int[arrayLength];
@@ -109,7 +109,7 @@ public class Bloco4Ex22 {
         return missingNumbers;
     }
 
-    private static void runLookupLoop(int[] sortedAvailableNumbers, int loopLength, int currentResult, int[] missingNumbers, int currentPosition) {
+    private void runLookupLoop(int[] sortedAvailableNumbers, int loopLength, int currentResult, int[] missingNumbers, int currentPosition) {
         for (int i = 0; i < loopLength; i++) {
             if (i < sortedAvailableNumbers.length) {
                 if (sortedAvailableNumbers[i] != currentResult) {
@@ -124,7 +124,7 @@ public class Bloco4Ex22 {
         }
     }
 
-    private static int getMissingNumbersArrayLength(int[] sortedAvailableNumbers) {
+    private int getMissingNumbersArrayLength(int[] sortedAvailableNumbers) {
         int arrayLength = 0;
         int current = 1;
 
@@ -145,11 +145,11 @@ public class Bloco4Ex22 {
         return arrayLength;
     }
 
-    private static int[] getSortedArray(int[] array) {
+    private int[] getSortedArray(int[] array) {
         return Arrays.stream(array).sorted().toArray();
     }
 
-    private static int[] runColumnLookup(int[][] gameMatrix, int rowOrColumnNumber, int count) {
+    private int[] runColumnLookup(int[][] gameMatrix, int rowOrColumnNumber, int count) {
         for (int i = 0; i < gameMatrix.length; i++) if (gameMatrix[i][rowOrColumnNumber] > 0) count++;
         int[] availableNumbers = new int[count];
 
@@ -163,7 +163,7 @@ public class Bloco4Ex22 {
         return availableNumbers;
     }
 
-    private static int[] runRowLookup(int[][] gameMatrix, int rowOrColumnNumber, int count) {
+    private int[] runRowLookup(int[][] gameMatrix, int rowOrColumnNumber, int count) {
         for (int i = 0; i < gameMatrix.length; i++) if (gameMatrix[rowOrColumnNumber][i] > 0) count++;
         int[] availableNumbers = new int[count];
 

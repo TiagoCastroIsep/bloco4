@@ -20,6 +20,8 @@ public class PlaySudoku {
                 {0, 5, 2, 7, 9, 6, 8, 3, 4}
         };
 
+        Bloco4Ex22 bloco4Ex22 = new Bloco4Ex22();
+
         System.out.println("|0, 1, 2, 3, 4, 5, 6, 7, 8|");
         System.out.println("---------------------------");
         System.out.println(Arrays.deepToString(gameMatrix).replace("], ",
@@ -47,8 +49,8 @@ public class PlaySudoku {
             System.out.println("Please enter the number: ");
             int numberSelected = scanner.nextInt();
 
-            if (Bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected)) {
-                gameMatrix = Bloco4Ex22.updateGameMatrix(gameMatrix, rowSelected, columnSelected, numberSelected);
+            if (bloco4Ex22.validateUserSelection(gameMatrix, rowSelected, columnSelected, numberSelected)) {
+                gameMatrix = bloco4Ex22.updateGameMatrix(gameMatrix, rowSelected, columnSelected, numberSelected);
                 System.out.println("The game matrix was updated! Your choice was correct!");
             } else {
                 System.out.println("The game matrix was not updated! Your choice was incorrect or the slot is already filled!");
@@ -62,7 +64,7 @@ public class PlaySudoku {
             System.out.println("---------------------------");
             System.out.println("|0, 1, 2, 3, 4, 5, 6, 7, 8|");
 
-            gameOver = Bloco4Ex22.checkGameOver(gameMatrix);
+            gameOver = bloco4Ex22.checkGameOver(gameMatrix);
 
             if (gameOver) {
                 System.out.println("---------------------------------");

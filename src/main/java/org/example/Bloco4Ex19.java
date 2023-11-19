@@ -2,7 +2,7 @@ package org.example;
 
 public class Bloco4Ex19 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
-    public static int getMatrixDeterminantWithLaplaceTheorem(int[][] matrix) {
+    public int getMatrixDeterminantWithLaplaceTheorem(int[][] matrix) {
         if (!bloco4Utils.checkIfMatrixIsSquare(matrix)) return -1;
 
         int determinant;
@@ -13,7 +13,7 @@ public class Bloco4Ex19 {
         return determinant;
     }
 
-    private static int getDeterminantOfNxNMatrix(int[][] matrix) {
+    private int getDeterminantOfNxNMatrix(int[][] matrix) {
         // formula for matrix {{1, 3, 5}, {2, 4, 6}, {-4, 1, -1}} is:
         // 1*(-1)^1+1 * getDeterminantOf2x2Matrix({{4, 6}, {1, -1}}) -
         // 3*(-1)^1+2 * getDeterminantOf2x2Matrix({{2, 6}, {-4, -1}}) +
@@ -27,7 +27,7 @@ public class Bloco4Ex19 {
         return determinant;
     }
 
-    private static int[][] getSubMatrix(int[][] matrix, int i) {
+    private int[][] getSubMatrix(int[][] matrix, int i) {
         // removing the last line and last column
         int[][] subMatrix = new int[matrix.length - 1][matrix.length - 1];
         for (int j = 1; j < matrix.length; j++) {
@@ -39,7 +39,7 @@ public class Bloco4Ex19 {
         return subMatrix;
     }
 
-    private static int getDeterminantOf2x2Matrix(int[][] matrix) {
+    private int getDeterminantOf2x2Matrix(int[][] matrix) {
         // formula: {{a, b}, {c, d}} = a*d - b*c
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
     }

@@ -7,7 +7,8 @@ import java.util.*;
 public class Ex13Playground {
     public static void main(String[] args) {
         int[] numbers = new int[] {2, 3, 4, 5, 3, 4, 5, 8, 7};
-        System.out.println(Arrays.toString(Bloco4Ex13.getSetOfNonRepeatedNumbers(numbers)));
+        Bloco4Ex13 bloco4Ex13 = new Bloco4Ex13();
+        System.out.println(Arrays.toString(bloco4Ex13.getSetOfNonRepeatedNumbers(numbers)));
         // LinkedHashMap is used to preserve the order of insertion
         getSetOfNonRepeatedNumbersWithHashMap(numbers);
         // HashSet is used to remove duplicates and sort the elements

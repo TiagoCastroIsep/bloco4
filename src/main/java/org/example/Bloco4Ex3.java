@@ -2,7 +2,7 @@ package org.example;
 
 public class Bloco4Ex3 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
-    public static int sumOfArrayElements(int number) {
+    public int sumOfArrayElements(int number) {
         int[] digitsArrayFromNumber = bloco4Utils.getArrayFromIntNumber(number);
         if (digitsArrayFromNumber == null) return -1;
 

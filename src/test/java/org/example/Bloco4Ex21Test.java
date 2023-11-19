@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Bloco4Ex21Test {
+    static final Bloco4Ex21 bloco4Ex21 = new Bloco4Ex21();
     @Test
     void shouldReturnMaskMatrixForRequestLetterA() {
         char[][] lettersMatrix = {
@@ -18,7 +19,7 @@ class Bloco4Ex21Test {
                 {0, 0, 0},
                 {0, 0, 0},
         };
-        assertArrayEquals(expected, Bloco4Ex21.getMaskMatrixFromSingleChar(lettersMatrix, requestedLetter));
+        assertArrayEquals(expected, bloco4Ex21.getMaskMatrixFromSingleChar(lettersMatrix, requestedLetter));
     }
 
     @Test
@@ -34,14 +35,14 @@ class Bloco4Ex21Test {
                 {0, 0, 0},
                 {0, 0, 0},
         };
-        assertArrayEquals(expected, Bloco4Ex21.getMaskMatrixFromSingleChar(lettersMatrix, requestedLetter));
+        assertArrayEquals(expected, bloco4Ex21.getMaskMatrixFromSingleChar(lettersMatrix, requestedLetter));
     }
 
     @Test
     void shouldReturnNullMatrixForEmptyLettersMatrix() {
         char[][] lettersMatrix = {{}};
         char requestedLetter = 'a';
-        assertNull(Bloco4Ex21.getMaskMatrixFromSingleChar(lettersMatrix, requestedLetter));
+        assertNull(bloco4Ex21.getMaskMatrixFromSingleChar(lettersMatrix, requestedLetter));
     }
 
     /** Alínea b) e talvez também c) **/
@@ -54,7 +55,7 @@ class Bloco4Ex21Test {
         };
         String word = "aei";
 
-        assertTrue(Bloco4Ex21.checkIfRequestedWordExistsInLettersMatrix(lettersMatrix, word));
+        assertTrue(bloco4Ex21.checkIfRequestedWordExistsInLettersMatrix(lettersMatrix, word));
     }
 
     @Test
@@ -66,7 +67,7 @@ class Bloco4Ex21Test {
         };
         String word = "kae";
 
-        assertFalse(Bloco4Ex21.checkIfRequestedWordExistsInLettersMatrix(lettersMatrix, word));
+        assertFalse(bloco4Ex21.checkIfRequestedWordExistsInLettersMatrix(lettersMatrix, word));
     }
 
     @Test
@@ -77,7 +78,7 @@ class Bloco4Ex21Test {
         };
         String word = "kae";
 
-        assertFalse(Bloco4Ex21.checkIfRequestedWordExistsInLettersMatrix(lettersMatrix, word));
+        assertFalse(bloco4Ex21.checkIfRequestedWordExistsInLettersMatrix(lettersMatrix, word));
     }
 
     /** Alínea d) **/
@@ -91,7 +92,7 @@ class Bloco4Ex21Test {
         String word1 = "aei";
         String word2 = "ceg";
 
-        assertTrue(Bloco4Ex21.checkCommonCellsForProvidedWords(lettersMatrix, word1, word2));
+        assertTrue(bloco4Ex21.checkCommonCellsForProvidedWords(lettersMatrix, word1, word2));
     }
 
     @Test
@@ -104,6 +105,6 @@ class Bloco4Ex21Test {
         String word1 = "abc";
         String word2 = "def";
 
-        assertFalse(Bloco4Ex21.checkCommonCellsForProvidedWords(lettersMatrix, word1, word2));
+        assertFalse(bloco4Ex21.checkCommonCellsForProvidedWords(lettersMatrix, word1, word2));
     }
 }

@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Bloco4Ex16Test {
+    static final Bloco4Ex16 bloco4Ex16 = new Bloco4Ex16();
     @Test
     public void shouldReturnFalseForEmptyMatrix_checkIfMatrixIsSquare() {
         int[][] matrix = new int[0][0];
-        assertFalse(Bloco4Ex16.checkIfMatrixIsSquare(matrix));
+        assertFalse(bloco4Ex16.checkIfMatrixIsSquare(matrix));
     }
 
     @Test
@@ -17,7 +18,7 @@ class Bloco4Ex16Test {
                 {1, 2, 3},
                 {1, 2, 3}
         };
-        assertFalse(Bloco4Ex16.checkIfMatrixIsSquare(matrix));
+        assertFalse(bloco4Ex16.checkIfMatrixIsSquare(matrix));
     }
 
     @Test
@@ -25,7 +26,7 @@ class Bloco4Ex16Test {
         int[][] matrix = {
                 {}
         };
-        assertFalse(Bloco4Ex16.checkIfMatrixIsSquare(matrix));
+        assertFalse(bloco4Ex16.checkIfMatrixIsSquare(matrix));
     }
 
     @Test
@@ -35,7 +36,7 @@ class Bloco4Ex16Test {
                 {1, 2, 3},
                 {1, 2, 3}
         };
-        assertTrue(Bloco4Ex16.checkIfMatrixIsSquare(matrix));
+        assertTrue(bloco4Ex16.checkIfMatrixIsSquare(matrix));
     }
 
     @Test
@@ -43,7 +44,7 @@ class Bloco4Ex16Test {
         int[][] matrix = {
                 {1}
         };
-        assertTrue(Bloco4Ex16.checkIfMatrixIsSquare(matrix));
+        assertTrue(bloco4Ex16.checkIfMatrixIsSquare(matrix));
     }
 
     @Test
@@ -52,6 +53,6 @@ class Bloco4Ex16Test {
                 {1, 2},
                 {1, 2}
         };
-        assertTrue(Bloco4Ex16.checkIfMatrixIsSquare(matrix));
+        assertTrue(bloco4Ex16.checkIfMatrixIsSquare(matrix));
     }
 }
