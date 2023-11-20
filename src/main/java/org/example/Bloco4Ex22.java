@@ -124,7 +124,7 @@ public class Bloco4Ex22 {
         }
     }
 
-    private int getMissingNumbersArrayLength(int[] sortedAvailableNumbers) {
+    protected int getMissingNumbersArrayLength(int[] sortedAvailableNumbers) {
         int arrayLength = 0;
         int current = 1;
 
@@ -133,6 +133,7 @@ public class Bloco4Ex22 {
         }
 
         for (int i = 0; i < 9; i++) {
+            if (i == 9) return 0; // TODO <= 9 mutant to killed
             if (i < sortedAvailableNumbers.length) {
                 if (sortedAvailableNumbers[i] != current) {
                     arrayLength++;

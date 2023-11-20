@@ -1,0 +1,36 @@
+
+m	java:S1273"XRefactor the code in order to not assign to this loop counter from within the loop body.(¯ÀÚè
+m	java:S127;"XRefactor the code in order to not assign to this loop counter from within the loop body.(¯ÀÚè
+m	java:S127^"XRefactor the code in order to not assign to this loop counter from within the loop body.(¯ÀÚè
+l	java:S127|"XRefactor the code in order to not assign to this loop counter from within the loop body.(·é•
+n	java:S127û"XRefactor the code in order to not assign to this loop counter from within the loop body.(¯ÀÚè
+[
+java:S2583Æ"DChange this condition so that it does not always evaluate to "false"(ñÄÉ
+[
+java:S2583»"DChange this condition so that it does not always evaluate to "false"(ñÄÉ
+<
+java:S1168"&Return an empty array instead of null.(ÍæŠü
+<
+java:S1168N"&Return an empty array instead of null.(·••¥
+<
+java:S1168"&Return an empty array instead of null.(šÇ²b
+n
+java:S3776­"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(¡ÌĞÿüÿÿÿÿ
+W	java:S125—"<This block of commented-out lines of code should be removed.(Ä¦›æøÿÿÿÿ
+I
+java:S1135¢"2Complete the task associated to this TODO comment.(ûÕŞö
+I
+java:S1135¨"2Complete the task associated to this TODO comment.(ûÕŞö
+I
+java:S1135¸"2Complete the task associated to this TODO comment.(ƒ“Â²
+W	java:S125¿"<This block of commented-out lines of code should be removed.(¼¼·¤úÿÿÿÿ
+I
+java:S1135Ã"2Complete the task associated to this TODO comment.(ú®Œ¾
+R	java:S125Ê"<This block of commented-out lines of code should be removed.(üøŒû
+B
+java:S1168ç"&Return an empty array instead of null.(ÈÙÑßÿÿÿÿÿ
+D
+java:S1172ƒ".Remove this unused method parameter "numbers".(óÿ‰;
+Q	java:S125›"<This block of commented-out lines of code should be removed.(ğÔÉ
+B
+java:S1168µ"&Return an empty array instead of null.(åäˆ¿ÿÿÿÿÿ
