@@ -22,7 +22,7 @@ public class Bloco4Ex21 {
      * I can refactor it later on
      **/
     // Alinea a)
-    public static int[][] getMaskMatrixFromSingleChar(char[][] lettersMatrix, char requestedLetter) {
+    public int[][] getMaskMatrixFromSingleChar(char[][] lettersMatrix, char requestedLetter) {
         if (lettersMatrix.length == 0) return null;
         if (lettersMatrix[0].length != lettersMatrix.length) return null;
 
@@ -38,7 +38,7 @@ public class Bloco4Ex21 {
     }
 
     // Alinea b)... e c) também nesta mesma solução?
-    public static boolean checkIfRequestedWordExistsInLettersMatrix(char[][] lettersMatrix, String word) {
+    public boolean checkIfRequestedWordExistsInLettersMatrix(char[][] lettersMatrix, String word) {
         if (word.trim().isEmpty()) return false;
         if (lettersMatrix.length == 0) return false;
         if (lettersMatrix.length != lettersMatrix[0].length) return false;
@@ -55,7 +55,7 @@ public class Bloco4Ex21 {
         return sum == maskMatrix.length;
     }
 
-    private static int sumAllMatrixElements(int[][] maskMatrix) {
+    private int sumAllMatrixElements(int[][] maskMatrix) {
         int sum = 0;
         for (int[] matrix : maskMatrix) {
             for (int j = 0; j < maskMatrix.length; j++) {
@@ -66,7 +66,7 @@ public class Bloco4Ex21 {
         return sum;
     }
 
-    private static int[][] findMaskMatrixFromProvidedWord(char[][] lettersMatrix, char[] wordCharactersArray) {
+    private int[][] findMaskMatrixFromProvidedWord(char[][] lettersMatrix, char[] wordCharactersArray) {
         int[][] maskMatrix = new int[lettersMatrix.length][lettersMatrix[0].length];
         for (int i = 0; i < lettersMatrix.length; i++) {
             for (int j = 0; j < lettersMatrix.length; j++) {
@@ -82,14 +82,14 @@ public class Bloco4Ex21 {
         return maskMatrix;
     }
 
-    private static char[] getCharArrayFromStringWord(String word) {
+    private char[] getCharArrayFromStringWord(String word) {
         char[] wordCharactersArray = new char[word.length()];
         for (int i = 0; i < word.length(); i++) wordCharactersArray[i] = word.charAt(i);
         return wordCharactersArray;
     }
 
     // Alínea d)
-    public static boolean checkCommonCellsForProvidedWords(char[][] lettersMatrix, String word1, String word2) {
+    public boolean checkCommonCellsForProvidedWords(char[][] lettersMatrix, String word1, String word2) {
         if (!validateWordsAndMatrixInput(lettersMatrix, word1, word2)) return false;
 
         char[] wordCharsArray1 = getCharArrayFromStringWord(word1);
@@ -97,9 +97,6 @@ public class Bloco4Ex21 {
 
         int[][] maskMatrix1 = findMaskMatrixFromProvidedWord(lettersMatrix, wordCharsArray1);
         int[][] maskMatrix2 = findMaskMatrixFromProvidedWord(lettersMatrix, wordCharsArray2);
-
-        System.out.println(Arrays.deepToString(maskMatrix1));
-        System.out.println(Arrays.deepToString(maskMatrix2));
 
         boolean hasCommonCell = false;
         for (int i = 0; i < lettersMatrix.length; i++) {
@@ -114,7 +111,7 @@ public class Bloco4Ex21 {
         return hasCommonCell;
     }
 
-    private static boolean validateWordsAndMatrixInput(char[][] lettersMatrix, String word1, String word2) {
+    protected boolean validateWordsAndMatrixInput(char[][] lettersMatrix, String word1, String word2) {
         if (word1.trim().isEmpty()) return false;
         if (word2.trim().isEmpty()) return false;
         if (lettersMatrix.length == 0) return false;

@@ -8,8 +8,13 @@ public class Bloco4Ex12 {
 
         int[] digitsArray = bloco4Utils.getArrayFromIntNumber(number);
 
-        // TODO: unresolved boundary mutation
-        for (int i = 0; i < (digitsArray.length / 2) + 1; i++) {
+//        for (int i = 0; i < (digitsArray.length / 2) + 1; i++) {
+//            if (digitsArray[i] != digitsArray[digitsArray.length - (i + 1)]) {
+//                return false;
+//            }
+//        }
+        // Mutant killed with this change
+        for (int i = 0; i < digitsArray.length; i++) {
             if (digitsArray[i] != digitsArray[digitsArray.length - (i + 1)]) {
                 return false;
             }

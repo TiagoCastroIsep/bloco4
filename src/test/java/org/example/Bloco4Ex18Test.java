@@ -50,6 +50,13 @@ class Bloco4Ex18Test {
     }
 
     @Test
+    void shouldReturnPrimeNumbersFromArray2() {
+        int[] numbers = new int[] {2, 3, 5, 3, 5, 7};
+        int[] expected = new int[] {2, 3, 5, 3, 5, 7};
+        assertArrayEquals(expected, bloco4Ex18.getPrimeNumbersFromArray(numbers));
+    }
+
+    @Test
     void shouldReturnNullForEmptyNumbersArray() {
         int[] numbers = new int[0];
         assertNull(bloco4Ex18.getPrimeNumbersFromArray(numbers));
@@ -92,7 +99,47 @@ class Bloco4Ex18Test {
     }
 
     @Test
-    void shouldReturnFalseForIsNotIdentityMatrix() {
+    void shouldReturnFalseForIsNotIdentityMatrix2() {
+        int[][] matrix = new int[][] {
+                {0, 0, 0},
+                {0, 1, 0},
+                {1, 0, 1}
+        };
+        assertFalse(bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnFalseForIsNotIdentityMatrix3() {
+        int[][] matrix = new int[][] {
+                {1, 0, 1},
+                {0, 1, 0},
+                {1, 0, 0}
+        };
+        assertFalse(bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnFalseForIsNotIdentityMatrix_2ndDiagonal() {
+        int[][] matrix = new int[][] {
+                {1, 0, 1},
+                {0, 1, 0},
+                {0, 0, 1}
+        };
+        assertFalse(bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnFalseForIsNotIdentityMatrix_2ndDiagonal2() {
+        int[][] matrix = new int[][] {
+                {1, 0, 1},
+                {0, 0, 0},
+                {1, 0, 1}
+        };
+        assertFalse(bloco4Ex18.checkIsIdentityMatrix(matrix));
+    }
+
+    @Test
+    void shouldReturnFalseForIsNotIdentityMatrix_2ndDiagonal3() {
         int[][] matrix = new int[][] {
                 {1, 0, 0},
                 {0, 1, 0},

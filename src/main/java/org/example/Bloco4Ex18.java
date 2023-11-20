@@ -34,8 +34,8 @@ public class Bloco4Ex18 {
         return getTrimmedArrayOfPrimeNumbers(primeNumbersIndex, primeNumbers);
     }
 
-    private int[] getTrimmedArrayOfPrimeNumbers(int primeNumbersIndex, int[] primeNumbers) {
-        int[] primeNumbersCleanedUpList = new int[primeNumbersIndex];
+    private int[] getTrimmedArrayOfPrimeNumbers(int primeNumbersArrayLength, int[] primeNumbers) {
+        int[] primeNumbersCleanedUpList = new int[primeNumbersArrayLength];
         for (int i = 0; i < primeNumbersCleanedUpList.length; i++) {
             if (primeNumbers[i] == 0) break;
             primeNumbersCleanedUpList[i] = primeNumbers[i];

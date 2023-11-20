@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Bloco4Ex19 {
     static Bloco4Utils bloco4Utils = new Bloco4Utils();
     public int getMatrixDeterminantWithLaplaceTheorem(int[][] matrix) {
@@ -13,7 +15,7 @@ public class Bloco4Ex19 {
         return determinant;
     }
 
-    private int getDeterminantOfNxNMatrix(int[][] matrix) {
+    protected int getDeterminantOfNxNMatrix(int[][] matrix) {
         // formula for matrix {{1, 3, 5}, {2, 4, 6}, {-4, 1, -1}} is:
         // 1*(-1)^1+1 * getDeterminantOf2x2Matrix({{4, 6}, {1, -1}}) -
         // 3*(-1)^1+2 * getDeterminantOf2x2Matrix({{2, 6}, {-4, -1}}) +
@@ -22,12 +24,15 @@ public class Bloco4Ex19 {
         for (int i = 0; i < matrix.length; i++) {
             // matrix of type {{a, b}, {c, d}} so I can do => a*d - b*c
             int[][] subMatrix = getSubMatrix(matrix, i);
-            determinant += (int) (matrix[0][i] * getMatrixDeterminantWithLaplaceTheorem(subMatrix) * Math.pow(-1, i));
+            // TODO: this mutation is not possible to kill since a number / -1 or * -1 (except zero) will always change it's signal.
+            if (i % 2 == 0) determinant += matrix[0][i] * getMatrixDeterminantWithLaplaceTheorem(subMatrix);
+            else determinant += matrix[0][i] * getMatrixDeterminantWithLaplaceTheorem(subMatrix) * -1;
+//            determinant += (int) (matrix[0][i] * getMatrixDeterminantWithLaplaceTheorem(subMatrix) * Math.pow(-1, i));
         }
         return determinant;
     }
 
-    private int[][] getSubMatrix(int[][] matrix, int i) {
+    protected int[][] getSubMatrix(int[][] matrix, int i) {
         // removing the last line and last column
         int[][] subMatrix = new int[matrix.length - 1][matrix.length - 1];
         for (int j = 1; j < matrix.length; j++) {
